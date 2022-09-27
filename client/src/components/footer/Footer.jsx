@@ -33,7 +33,7 @@ const Footer = () => {
             <p>you also can send a message via whatsapp</p>
           </div>
         </div>
-        <img className={styles.img} src={images[index]} alt="" />
+        <img className={styles.img} src={`/bank/${images[index]}`} alt="img not found" />
       </div>
 
       <p id={styles.copyright}>copyright 2022 lior aharon</p>

@@ -3,8 +3,9 @@ import Input from "../input/Input";
 import Button from "../button/Button";
 import UserPage from "../../pages/user_page/UserPage";
 import { useDataProvider } from "../../context/Data";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 const TransferMoney = () => {
+  const navigate = useNavigate()
   const { state } = useLocation();
   const { username} = state;
   const { transferMoney } = useDataProvider();
@@ -12,6 +13,7 @@ const TransferMoney = () => {
   const [price, setPrice] = useState("");
   const handleClick = () => {
     transferMoney(username, price, usernameToTransfer);
+    navigate('/user/current-account',{state : state})
   };
   return (
     <UserPage>
