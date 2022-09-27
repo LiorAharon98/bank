@@ -1,0 +1,23 @@
+.user_menu_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(2, 136, 239);
+  border-radius: 5px;
+  min-height: 90vh;
+  width: 200px;
+}
+
+.li {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+@media screen and (max-width : 768px) {
+  .user_menu_container {
+ min-height: 60vh;
+ width: 400px;
+  }
+}

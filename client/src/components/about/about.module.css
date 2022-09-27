@@ -1,0 +1,18 @@
+
+.about {
+  padding-left: 15px;
+  width: 30%;
+  background-color: rgba(5, 191, 219, 0.869);
+  border-radius: 10px;
+}
+@media screen and (max-width :768px) {
+  .about{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 96%;
+    height: 200px;
+  }
+}

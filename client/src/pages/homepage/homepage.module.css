@@ -1,0 +1,14 @@
+body {
+  background-image: url("/public/pictures/bank_background.png");
+  background-size: 100%;
+  background-attachment: fixed;
+  background-position: center;
+}
+.container {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 650px;
+  padding-left: 15px;
+}

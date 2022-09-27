@@ -1,0 +1,25 @@
+.page_container {
+  height: 40px;
+
+  align-items: center;
+  justify-content: space-around;
+  display: flex;
+  background-color: rgb(236, 236, 236);
+}
+li {
+  list-style: none;
+  color: rgb(0, 94, 255);
+}
+li:hover {
+  background-color: black;
+  padding: 5px 10px 5px 10px;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .page_container {
+width: 100%;
+  }
+  
+}

@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+}
+.button {
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(240, 240, 240);
+  color: rgb(32, 140, 249);
+  font-size: 15px;
+  padding: 10px;
+}
+.button:hover{
+  background-color: black;
+  border: 1px solid white;
+  transition: 0.5s;
+}
