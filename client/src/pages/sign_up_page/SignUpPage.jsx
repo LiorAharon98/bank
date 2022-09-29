@@ -7,10 +7,8 @@ const SignUpPage = () => {
   const [userError, setUserError] = useState(false);
   const navigate = useNavigate();
   const handleClick = (data) => {
-    const { username, password, email, income } = data;
-
-    if (duplicateUsers(username)) return setUserError("user already exist");
-    addUser(username, password, email, income);
+    if (duplicateUsers(data.username)) return setUserError("user already exist");
+    addUser(data);
     navigate("/sign-in");
   };
   return (

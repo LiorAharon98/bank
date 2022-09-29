@@ -24,6 +24,7 @@ const translation_he = {
   'confirm password' : 'סיסמא חוזרת',
   about : 'אודות',
   username : 'שם משתמש',
-  price : 'סכום'
+  price : 'סכום',
+  copyright : 'זכויות יוצרים על ידי ליאור אהרון 2022'
 };
 export default translation_he;

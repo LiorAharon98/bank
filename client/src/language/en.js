@@ -21,6 +21,7 @@ const translation_en = {
   email: "email",
   password: "password",
   about : 'about',
-  username : 'username'
+  username : 'username',
+  copyright : 'copyright by lior aharon 2022'
 };
 export default translation_en;

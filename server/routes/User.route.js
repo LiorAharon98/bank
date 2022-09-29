@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const UserModel = require("../models/UserModel");
 router.get("/", async (req, res) => {
-  UserModel.find({}, (err, users) => {
+  await UserModel.find({}, (err, users) => {
     res.json(users);
-  });
+  }).clone();
 });
 router.post("/sign-up", async (req, res) => {
   const user = { ...req.body };

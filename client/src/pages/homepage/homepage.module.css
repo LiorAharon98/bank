@@ -4,6 +4,9 @@ body {
   background-attachment: fixed;
   background-position: center;
 }
+#welcome_tag{
+  text-align: center;
+}
 .container {
   color: white;
   display: flex;

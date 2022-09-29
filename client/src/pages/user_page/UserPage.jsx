@@ -4,7 +4,7 @@ import styles from "./user_page.module.css";
 import HamburgerMenu from "../../components/hamburger_menu/HamburgerMenu";
 import UserMenu from "../../components/user_menu/UserMenu";
 import { useDataProvider } from "../../context/Data";
-const UserPage = ({ children }) => {
+const UserPage = ({ children, text }) => {
   const { changeLanguage } = useDataProvider();
   const navigate = useNavigate();
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -29,7 +29,7 @@ const UserPage = ({ children }) => {
       </h1>
       <div className={styles.container}>
         <div className={styles.menu_container}>{toggleMenu && <UserMenu toggleOptionFunc={toggleOptionFunc} />}</div>
-        <div className={styles.container_middle}>{children}</div>
+        <div className={text === "current" ? styles.middle_current_container : styles.middle_container}>{children}</div>
         <div className={styles.container_end}></div>
       </div>
     </div>

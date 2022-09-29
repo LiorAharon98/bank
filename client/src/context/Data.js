@@ -12,13 +12,18 @@ const DataProvider = ({ children }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    axios.get(baseUrl).then((response) => {
-      setUsers(response.data);
-    });
+    const interval = setInterval(() => {
+      axios.get(baseUrl).then((response) => {
+        setUsers(response.data);
+      });
+    }, 2000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
-  const addUser = (username, password, email, income) => {
-    const user = { username, password, email, balance: 5000, income, expense: [] };
+  const addUser = (data) => {
+    const user = { ...data, balance: 5000, expense: [] };
     axios.post(`${baseUrl}/sign-up`, user).then((response) => {
       console.log(response.data[0]);
     });

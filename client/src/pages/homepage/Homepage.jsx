@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./homepage.module.css";
 import Button from "../../components/button/Button";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDataProvider } from "../../context/Data";
 const Homepage = () => {
   const navigate = useNavigate();
@@ -11,15 +11,12 @@ const Homepage = () => {
     { text: "create new account", to: "/sign-up" },
     { text: "business", to: "/business" },
   ];
-  const navigateFunc = (value) => {
-    navigate(value);
-  };
 
   return (
     <div className={styles.container}>
-      <h1>{changeLanguage("welcome")}</h1>
+      <h1 id={styles.welcome_tag}>{changeLanguage("welcome")}</h1>
       {buttons.map((button, index) => {
-        return <Button key={index} onClick={navigateFunc.bind(this, button.to)} {...button} />;
+        return <Button to={button.to} key={index} {...button} />;
       })}
     </div>
   );

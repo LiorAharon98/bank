@@ -36,7 +36,7 @@ const Footer = () => {
         <img className={styles.img} src={`/bank/${images[index]}`} alt="img not found" />
       </div>
 
-      <p id={styles.copyright}>copyright 2022 lior aharon</p>
+      <p id={styles.copyright}>{changeLanguage('copyright')}</p>
     </>
   );
 };

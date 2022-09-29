@@ -1,37 +1,27 @@
-import React, { useState } from "react";
 import Input from "../input/Input";
-import Button from "../button/Button";
 import UserPage from "../../pages/user_page/UserPage";
 import { useDataProvider } from "../../context/Data";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 const TransferMoney = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [error,setError] = useState('')
   const { state } = useLocation();
-  const { username} = state;
-  const { transferMoney } = useDataProvider();
-  const [usernameToTransfer, setUsernameToTransfer] = useState("");
-  const [price, setPrice] = useState("");
-  const handleClick = () => {
-    transferMoney(username, price, usernameToTransfer);
-    navigate('/user/current-account',{state : state})
+  const { username,password } = state;
+  const { transferMoney} = useDataProvider();
+  const handleClick = (data) => {
+    const { price, usernameToTransfer } = data;
+    if (price ==='' || price<0) return setError("error been taken")
+    transferMoney(username, Number(price), usernameToTransfer);
+    navigate("/user/current-account", { state: state });
   };
+  const inp = [
+    { name: "username", type: "text" },
+    { name: "price", type: "number" },
+  ];
   return (
     <UserPage>
-      <Input
-        onChange={(e) => {
-          setUsernameToTransfer(e.target.value);
-        }}
-        type={"text"}
-        placeHolder="username"
-      />
-      <Input
-        onChange={(e) => {
-          setPrice(e.target.value);
-        }}
-        type={"number"}
-        placeHolder="price"
-      />
-      <Button text={"transfer"} onClick={handleClick} />
+      <Input inpData={inp} onClick={handleClick} inpNumber={2}  error ={error}/>
     </UserPage>
   );
 };

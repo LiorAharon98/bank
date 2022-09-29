@@ -2,7 +2,10 @@
   display: flex;
 }
 .button {
-  height: 45px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 35px;
   border-radius: 10px;
   border: none;
   background-color: rgb(240, 240, 240);
