@@ -7,29 +7,36 @@ export const useDataProvider = () => {
 };
 
 const DataProvider = ({ children }) => {
-  const [users, setUsers] = useState([]);
   const baseUrl = "http://localhost:5000/bank";
+
+  const [users, setUsers] = useState([]);
   const { t } = useTranslation();
 
+  const fetchUsers = () => {
+    axios.get(baseUrl).then((response) => {
+      setUsers(response.data);
+    });
+  };
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      axios.get(baseUrl).then((response) => {
-        setUsers(response.data);
-      });
-    }, 2000);
-    return () => {
-      clearInterval(interval);
-    };
+    fetchUsers();
   }, []);
 
   const addUser = (data) => {
     const user = { ...data, balance: 5000, expense: [] };
-    axios.post(`${baseUrl}/sign-up`, user).then((response) => {
-      console.log(response.data[0]);
+    axios.post(`${baseUrl}/sign-up`, user).then(() => {
+      fetchUsers();
     });
   };
   const changeLanguage = (value) => {
     return t(value);
+  };
+  const getDate = () => {
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
   };
   const specificUser = (username, password) => {
     const check = users.find((user) => {
@@ -37,14 +44,8 @@ const DataProvider = ({ children }) => {
     });
     return check;
   };
-  const isUserExist = (username, password) => {
-    const check = users.find((user) => {
-      return user.username === username && user.password === password;
-    });
-    return check;
-  };
 
-  const duplicateUsers = (username) => {
+  const isUsernameExist = (username) => {
     const check = users.find((user) => {
       return user.username === username;
     });
@@ -52,23 +53,25 @@ const DataProvider = ({ children }) => {
   };
 
   const transferMoney = (username, price, usernameToTransfer) => {
-    const details = { username, price, usernameToTransfer };
-    axios.post(`${baseUrl}/user/transfer-money`, details);
+    const details = { username, money: { price, moneyType: "transfer", date: getDate() }, usernameToTransfer };
+    axios.post(`${baseUrl}/user/transfer-money`, details).then((res) => {
+      fetchUsers();
+    });
   };
   const loanMoney = (username, price) => {
-    const user = { username, price };
-    axios.post(`${baseUrl}/user/loan`, user);
+    const user = { username, money: { price, moneyType: "loan", date: getDate() } };
+    axios.post(`${baseUrl}/user/loan`, user).then((res) => {
+      fetchUsers();
+    });
   };
 
   const value = {
     setUsers,
-    users,
     addUser,
     specificUser,
     transferMoney,
     changeLanguage,
-    isUserExist,
-    duplicateUsers,
+    isUsernameExist,
     loanMoney,
   };
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

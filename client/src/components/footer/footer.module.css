@@ -1,6 +1,7 @@
 .container {
   display: flex;
   justify-content: space-between;
+
 }
 .div {
   border-radius: 10px;

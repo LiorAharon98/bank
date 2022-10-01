@@ -9,19 +9,22 @@ router.get("/", async (req, res) => {
 router.post("/sign-up", async (req, res) => {
   const user = { ...req.body };
   await UserModel.create(user);
+  res.json('ok')
 });
 router.post("/user/transfer-money", async (req, res) => {
-  const { username, price, usernameToTransfer } = req.body;
+  const { username, money, usernameToTransfer } = req.body;
   const filter = { username: usernameToTransfer };
-  const update = { balance: Number(price) };
+  const update = { balance: money.price };
   await UserModel.findOneAndUpdate(filter, { $inc: update });
-  await UserModel.findOneAndUpdate({ username: username }, { $inc: { balance: -price }, $push: { expense: price } });
+  await UserModel.findOneAndUpdate({ username: username }, { $inc: { balance: -money.price }, $push: { expense: money } });
+  res.json("ok");
 });
 router.post("/user/loan", async (req, res) => {
-  const { username, price } = req.body;
+  const { username, money } = req.body;
   const filter = { username: username };
-  const update = { balance: Number(price) };
-  await UserModel.findOneAndUpdate(filter, { $inc: update });
+  const update = { balance: money.price };
+  await UserModel.findOneAndUpdate(filter, { $inc: update, $push: { expense: money } });
+  res.json("ok");
 });
 router.post("/user/update-user-details", (req, res) => {
   const details = { ...req.body };

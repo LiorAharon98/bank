@@ -7,6 +7,11 @@
   border-radius: 5px;
   min-height: 90vh;
   width: 200px;
+  transition: 500ms;
+}
+.user_menu_inactive {
+  width: 0px;
+  transition: 500ms;
 }
 
 .li {
@@ -15,9 +20,9 @@
   font-weight: 500;
 }
 
-@media screen and (max-width : 768px) {
+@media screen and (max-width: 768px) {
   .user_menu_container {
- min-height: 60vh;
- width: 400px;
+    min-height: 60vh;
+    width: 400px;
   }
 }

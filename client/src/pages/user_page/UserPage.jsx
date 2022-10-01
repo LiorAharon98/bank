@@ -28,7 +28,7 @@ const UserPage = ({ children, text }) => {
         {changeLanguage("hello")} {username}{" "}
       </h1>
       <div className={styles.container}>
-        <div className={styles.menu_container}>{toggleMenu && <UserMenu toggleOptionFunc={toggleOptionFunc} />}</div>
+        <UserMenu toggleOptionFunc={toggleOptionFunc} toggle={toggleMenu} />
         <div className={text === "current" ? styles.middle_current_container : styles.middle_container}>{children}</div>
         <div className={styles.container_end}></div>
       </div>

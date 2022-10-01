@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../button/Button";
-import styles from "./authentication.module.css";
+import styles from "./authentication_sign.module.css";
 import InputValidation from "../input_validation/InputValidation";
 import { useForm } from "react-hook-form";
 const Authentication = ({ text, onClick, page, userError }) => {

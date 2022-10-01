@@ -1,0 +1,14 @@
+.expense_container {
+  text-align: center;
+}
+.money_details {
+  font-size: 18px;
+  border-radius: 10px;
+  padding: 2px;
+  width: 130px;
+  margin-left: 10px;
+}
+.money_container {
+  display: flex;
+  align-items: center;
+}

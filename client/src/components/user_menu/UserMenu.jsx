@@ -1,7 +1,7 @@
 import React from "react";
 import { useDataProvider } from "../../context/Data";
 import styles from "./user_menu.module.css";
-const UserMenu = ({ toggleOptionFunc}) => {
+const UserMenu = ({ toggleOptionFunc, toggle }) => {
   const li = [
     { label: "current account", to: "/current-account" },
     { label: "update details", num: 2, to: "/update-user-details" },
@@ -11,14 +11,15 @@ const UserMenu = ({ toggleOptionFunc}) => {
   ];
   const { changeLanguage } = useDataProvider();
   return (
-    <div className={styles.user_menu_container}>
-      {li.map((li, index) => {
-        return (
-          <li key={index} className={styles.li} onClick={toggleOptionFunc.bind(this, li)}>
-            {changeLanguage(li.label)}
-          </li>
-        );
-      })}
+    <div className={toggle ? styles.user_menu_container : styles.user_menu_inactive}>
+      {toggle &&
+        li.map((li, index) => {
+          return (
+            <li key={index} className={styles.li} onClick={toggleOptionFunc.bind(this, li)}>
+              {changeLanguage(li.label)}
+            </li>
+          );
+        })}
     </div>
   );
 };

@@ -10,6 +10,7 @@
   height: 100px;
 }
 .tr_container {
+  height: 40px;
   text-align: center;
   background-color: white;
 }

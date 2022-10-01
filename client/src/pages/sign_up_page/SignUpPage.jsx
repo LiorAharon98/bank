@@ -1,13 +1,13 @@
-import Authentication from "../../components/authentication_page/Authentication";
+import Authentication from "../../components/authentication_sign/AuthenticationSign";
 import { useDataProvider } from "../../context/Data";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 const SignUpPage = () => {
-  const { addUser, duplicateUsers } = useDataProvider();
+  const { addUser, isUsernameExist } = useDataProvider();
   const [userError, setUserError] = useState(false);
   const navigate = useNavigate();
   const handleClick = (data) => {
-    if (duplicateUsers(data.username)) return setUserError("user already exist");
+    if (isUsernameExist(data.username)) return setUserError("user already exist");
     addUser(data);
     navigate("/sign-in");
   };

@@ -25,9 +25,9 @@ const CurrentAccount = () => {
             expense.map((expense, index) => {
               const {date,price,moneyType} = expense
               return (
-                <div className={styles.money_container} >
+                <div key={index} className={styles.money_container} >
                 <p >{date}</p>   
-                <p className={styles.money_details} style={{ backgroundColor: moneyType === "loan" ? "rgb(0,200,0)" : 'rgb(250,0,0)' }} key={index}>
+                <p className={styles.money_details} style={{ backgroundColor: moneyType === "loan" ? "rgb(0,200,0)" : 'rgb(250,0,0)' }}>
                   {" "}
                   {changeLanguage(moneyType)} : {price} ₪
                 </p>

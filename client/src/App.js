@@ -1,19 +1,19 @@
-import { BrowserRouter, Routes, Route,Router, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
 import Homepage from "./pages/homepage/Homepage";
 import SignInPage from "./pages/sign_in_page/SignInPage";
 import SignUpPage from "./pages/sign_up_page/SignUpPage";
 import UserPage from "./pages/user_page/UserPage";
 import AdminPage from "./pages/admin_page/AdminPage";
-import CurrentAccount from "./components/current_account/CurrentAccount";
-import UpdateUserDetails from "./components/update_user_details/UpdateUserDetails";
-import Loan from "./components/loan/Loan";
+import CurrentAccount from "./pages/current_account/CurrentAccount";
+import UpdateUserDetails from "./pages/update_user_details/UpdateUserDetails";
+import TransferMoney from "./pages/transfer_money/TransferMoney";
+import Loan from "./pages/loan/Loan";
 import Footer from "./components/footer/Footer";
 
-import TransferMoney from "./components/transfer_money/TransferMoney";
 function App() {
   return (
-    <BrowserRouter  basename="/bank">
+    <BrowserRouter basename="/bank">
       <Header />
       <Routes>
         <Route path="/" element={<Homepage />}></Route>

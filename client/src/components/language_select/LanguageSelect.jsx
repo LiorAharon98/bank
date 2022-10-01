@@ -7,11 +7,12 @@ const LanguageSelect = () => {
     i18n.changeLanguage(e);
   };
   return (
+
     <select className={styles.select}
       onChange={(e) => {
         handleEvent(e.target.value);
       }}
-    >
+      >
       <option value="en">english</option>
       <option value="he">hebrew</option>
     </select>
