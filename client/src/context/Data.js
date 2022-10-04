@@ -7,14 +7,18 @@ export const useDataProvider = () => {
 };
 
 const DataProvider = ({ children }) => {
-  const baseUrl = "http://localhost:5000/bank";
+  const baseUrl = "https://nodejs-bank.herokuapp.com/bank";
+
 
   const [users, setUsers] = useState([]);
   const { t } = useTranslation();
 
   const fetchUsers = () => {
-    axios.get(baseUrl).then((response) => {
-      setUsers(response.data);
+    axios({
+      method: "GET",
+      url: baseUrl,
+    }).then((response) => {
+      console.log(response);
     });
   };
 

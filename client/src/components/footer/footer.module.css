@@ -1,7 +1,6 @@
 .container {
   display: flex;
   justify-content: space-between;
-
 }
 .div {
   border-radius: 10px;
@@ -38,7 +37,7 @@ img {
     height: 200px;
     width: 100%;
   }
-  #copyright{
+  #copyright {
     width: 100%;
   }
 }
