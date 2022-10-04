@@ -9,23 +9,17 @@ export const useDataProvider = () => {
 const DataProvider = ({ children }) => {
   const baseUrl = "https://nodejs-bank.herokuapp.com/bank";
 
-
   const [users, setUsers] = useState([]);
   const { t } = useTranslation();
 
   const fetchUsers = () => {
-    axios({
-      method: "GET",
-      url: baseUrl,
-    }).then((response) => {
-      console.log(response);
+    axios.get(baseUrl).then((response) => {
+      setUsers(response.data);
     });
   };
-
   useEffect(() => {
     fetchUsers();
   }, []);
-
   const addUser = (data) => {
     const user = { ...data, balance: 5000, expense: [] };
     axios.post(`${baseUrl}/sign-up`, user).then(() => {
