@@ -6,7 +6,7 @@
   background-color: rgb(2, 136, 239);
   border-radius: 5px;
   min-height: 90vh;
-  width: 200px;
+  width: 250px;
   transition: 500ms;
 }
 .user_menu_inactive {
@@ -22,7 +22,7 @@
 
 @media screen and (max-width: 768px) {
   .user_menu_container {
-    min-height: 60vh;
-    width: 400px;
+    margin-right: 5px;
+
   }
 }

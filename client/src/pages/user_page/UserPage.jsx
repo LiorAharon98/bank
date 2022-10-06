@@ -21,7 +21,7 @@ const UserPage = ({ children, text }) => {
     navigate(`/user${li.to}`, { state: state });
   };
   return (
-    <div>
+    <>
       <HamburgerMenu onClick={toggle} />
 
       <h1 id={styles.welcome_message}>
@@ -32,7 +32,7 @@ const UserPage = ({ children, text }) => {
         <div className={text === "current" ? styles.middle_current_container : styles.middle_container}>{children}</div>
         <div className={styles.container_end}></div>
       </div>
-    </div>
+    </>
   );
 };
 

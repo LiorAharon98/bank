@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useDataProvider } from "../../context/Data";
 const Loan = () => {
   const navigate = useNavigate();
-  const { loanMoney } = useDataProvider();
+  const { loanMoney,changeLanguage } = useDataProvider();
   const { state } = useLocation();
   const { username, income } = state;
   const [error, setError] = useState("");
@@ -26,7 +26,7 @@ const Loan = () => {
         onClick={handleClick}
         rules={{ required: "fill please", minLength: { value: 2, message: "must be at least 2 char" } }}
       />
-      <h2>max loan is {maxLoan} ₪</h2>
+      <h2>{changeLanguage('max loan')} {maxLoan} ₪</h2>
     </UserPage>
   );
 };

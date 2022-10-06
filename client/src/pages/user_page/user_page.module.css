@@ -43,14 +43,14 @@
 }
 
 @media screen and (max-width : 768px) {
+  .container{
+  min-height: 60vh;
+
+  }
   .container_end{
    display: none;
   }
-  .container_middle{
 
-    width: 100%;
-    margin-bottom: 100px;
-  }
   .middle_container{
     width: 100%;
   }

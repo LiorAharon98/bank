@@ -1,8 +1,6 @@
 body {
   background-image: url("/public/pictures/bank_background.png");
   background-size: 100%;
-  background-attachment: fixed;
-  background-position: center;
 }
 #welcome_tag{
   text-align: center;

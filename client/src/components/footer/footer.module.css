@@ -28,7 +28,7 @@ img {
   }
   .div {
     margin: 15px 0px 15px 0px;
-    height: 200px;
+    height: max-content;
     width: 96%;
     display: flex;
     flex-direction: column;

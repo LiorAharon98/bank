@@ -25,6 +25,8 @@ const translation_he = {
   about : 'אודות',
   username : 'שם משתמש',
   price : 'סכום',
-  copyright : 'זכויות יוצרים על ידי ליאור אהרון 2022'
+  copyright : 'זכויות יוצרים על ידי ליאור אהרון 2022',
+  'max loan' : 'הלוואה מקסמילית',
+  usernameToTransfer : 'למי להעביר'
 };
 export default translation_he;

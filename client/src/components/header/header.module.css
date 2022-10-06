@@ -19,6 +19,8 @@ li:hover {
 
 @media screen and (max-width: 768px) {
   .page_container {
+    position: sticky;
+    top: 0px;
 width: 100%;
   }
   

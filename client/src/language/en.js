@@ -22,6 +22,8 @@ const translation_en = {
   password: "password",
   about : 'about',
   username : 'username',
-  copyright : 'copyright by lior aharon 2022'
+  copyright : 'copyright by lior aharon 2022',
+  'max loan' : 'max loan is',
+  usernameToTransfer : 'username to transfer'
 };
 export default translation_en;
