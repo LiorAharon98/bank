@@ -1,16 +1,22 @@
 const express = require("express");
 const router = express.Router();
 const UserModel = require("../models/UserModel");
-router.get("/", async (req, res) => {
+router.get("/admin", async (req, res) => {
   await UserModel.find({}, (err, users) => {
     res.json(users);
-  }).clone();
+  });
 });
 router.post("/sign-up", async (req, res) => {
   const user = { ...req.body };
   await UserModel.create(user);
   res.json("ok");
 });
+router.post('/sign-in',async (req,res)=>{
+const {username,password} = req.body
+const user = await UserModel.find({username : username, password : password})
+console.log(user)
+res.json(user)
+})
 router.post("/user/transfer-money", async (req, res) => {
   const { username, money, usernameToTransfer } = req.body;
   const filter = { username: usernameToTransfer };

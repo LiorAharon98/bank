@@ -1,12 +1,14 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const UserModel = require("./models/UserModel");
 const UserRoute = require("./routes/User.route");
-mongoose.connect(process.env.MONGODB_URI);
 const setServerConfiguration = require("./config");
 
 setServerConfiguration(app);
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    "mongodb+srv://liors-database:lior.ah98@cluster0.iybrzvm.mongodb.net/bank?retryWrites=true&w=majority"
+);
 
 app.use("/bank", UserRoute);
 
