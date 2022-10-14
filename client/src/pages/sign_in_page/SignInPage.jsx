@@ -5,12 +5,13 @@ import { useNavigate } from "react-router-dom";
 const SignInPage = () => {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
-  const { specificUser } = useDataProvider();
-  const handleClick = (data) => {
+  const { setSpecificUsername, isUsernameExist, specificUser } = useDataProvider();
+  const handleClick = async (data) => {
     const { username, password } = data;
     if (username === "Admin" && password === "1111") return navigate("/admin");
-    if (!specificUser(username, password)) return setError("user not found");
-    navigate("/user/current-account", { state: specificUser(username, password) });
+    const user = await specificUser(username, password);
+    if (!user) return setError("user not found");
+    navigate("/user/current-account");
   };
   return <Authentication userError={error} onClick={handleClick} text={"sign in"} />;
 };

@@ -19,7 +19,7 @@ const Authentication = ({ text, onClick, page, userError }) => {
   const checkEqualPassword = watch("password");
   return (
     <div className={styles.container}>
-      <div style={{ height: text === "sign in" && "50%" }} className={styles.authentication_container}>
+      <div style={{ height: text === "sign in" && "70%" }} className={styles.authentication_container}>
         <InputValidation
           type={"text"}
           control={control}

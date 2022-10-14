@@ -1,25 +1,25 @@
 import React from "react";
 import Input from "../../components/input/Input";
 import UserPage from "../../pages/user_page/UserPage";
-import { useLocation, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDataProvider } from "../../context/Data";
 const Loan = () => {
   const navigate = useNavigate();
-  const { loanMoney,changeLanguage } = useDataProvider();
-  const { state } = useLocation();
-  const { username, income } = state;
+  const { loanMoney,changeLanguage,user } = useDataProvider();
+  const { username, income } = user;
   const [error, setError] = useState("");
   const inpData = [{ name: "price", type: "number" }];
   const maxLoan = Math.floor((income * 70) / 100);
   const handleClick = (data) => {
     if (data.price > maxLoan) return setError("request has been declined");
     loanMoney(username, Number(data.price));
-    navigate("/user/current-account", { state: state });
+    navigate("/user/current-account");
   };
   return (
-    <UserPage>
+    <UserPage  >
       <Input
+      text={'loan'}
         inpNumber={1}
         inpData={inpData}
         error={error}

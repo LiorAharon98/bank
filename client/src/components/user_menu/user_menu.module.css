@@ -5,7 +5,7 @@
   align-items: center;
   background-color: rgb(2, 136, 239);
   border-radius: 5px;
-  min-height: 90vh;
+  height: 750px;
   width: 250px;
   transition: 500ms;
 }

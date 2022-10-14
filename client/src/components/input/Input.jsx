@@ -3,7 +3,7 @@ import InputValidation from "../input_validation/InputValidation";
 import { useForm } from "react-hook-form";
 import Button from "../button/Button";
 import styles from "./input.module.css";
-const Input = ({ onClick, inpNumber, inpData, error, rules }) => {
+const Input = ({ onClick, inpNumber, inpData, error, rules,text }) => {
   const inp = new Array(inpNumber).fill(1);
   const {
     handleSubmit,
@@ -24,7 +24,7 @@ const Input = ({ onClick, inpNumber, inpData, error, rules }) => {
         );
       })}
 
-      <Button text={"transfer"} onClick={handleSubmit(onClick)} />
+      <Button text={text} onClick={handleSubmit(onClick)} />
       {error && <p className={styles.error_tag}>{error} !</p>}
     </div>
   );
