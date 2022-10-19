@@ -3,11 +3,13 @@ import { useDataProvider } from "../../context/Data";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 const SignUpPage = () => {
-  const { addUser, isUsernameExist } = useDataProvider();
+  const { addUser, specificUser } = useDataProvider();
   const [userError, setUserError] = useState(false);
   const navigate = useNavigate();
-  const handleClick = (data) => {
-    if (isUsernameExist(data.username)) return setUserError("user already exist");
+  const handleClick = async(data) => {
+    const {username,password} = data
+    const response = await specificUser(username,password)
+    if(response) return setUserError('user already exist')
     addUser(data);
     navigate("/sign-in");
   };

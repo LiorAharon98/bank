@@ -28,7 +28,8 @@ const DataProvider = ({ children }) => {
   };
   const transferMoney = async (username, price, usernameToTransfer) => {
     const details = { username, money: { price, moneyType: "transfer", date: getDate() }, usernameToTransfer };
-    const response = await axios.post(`${baseUrl}/user/transfer-money`, details).then((res) => {
+    const response = await axios.post(`${localhostUrl}/user/transfer-money`, details).then((res) => {
+      if (!res.data) return false
       setUser(res.data[0]);
       return res.data[0];
     });

@@ -6,6 +6,11 @@ const CurrentAccount = () => {
   const { changeLanguage, user } = useDataProvider();
   const { balance, expense, income } = user;
 
+  expense.sort((a, b) => {
+    if (a.date > b.date) return -1;
+    if (a.date < b.date) return 1;
+    return 0
+  });
   return (
     <UserPage text={true}>
       <h2>
@@ -15,22 +20,21 @@ const CurrentAccount = () => {
         {changeLanguage("income")} : {income}₪
       </h2>
       <div className={styles.expense_container}>
-        {expense.length !== 0 &&
-          expense.map((expense, index) => {
-            const { date, price, moneyType } = expense;
-            return (
-              <div key={index} className={styles.money_container}>
-                <p>{date}</p>
-                <p
-                  className={styles.money_details}
-                  style={{ backgroundColor: moneyType === "loan" ? "rgb(0,200,0)" : "rgb(250,0,0)" }}
-                >
-                  {" "}
-                  {changeLanguage(moneyType)} : {price} ₪
-                </p>
-              </div>
-            );
-          })}
+        {expense.map((expense, index) => {
+          const { date, price, moneyType } = expense;
+          return (
+            <div key={index} className={styles.money_container}>
+              <p>{date}</p>
+              <p
+                className={styles.money_details}
+                style={{ backgroundColor: moneyType === "transfer" ? "rgb(250,0,0)" : "rgb(0,200,0)" }}
+              >
+                {" "}
+                {changeLanguage(moneyType)} : {price} ₪
+              </p>
+            </div>
+          );
+        })}
       </div>
     </UserPage>
   );

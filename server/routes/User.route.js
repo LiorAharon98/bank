@@ -20,14 +20,13 @@ router.post("/user/transfer-money", async (req, res) => {
   const { username, money, usernameToTransfer } = req.body;
   const filter = { username: usernameToTransfer };
   const update = { balance: money.price };
-   const userToTransfer = await UserModel.findOneAndUpdate(filter, { $inc: update });
+  const userToTransfer = await UserModel.findOneAndUpdate(filter, { $inc: update, $push: { expense: {...money , moneyType : 'received '} } });
   await UserModel.findOneAndUpdate(
     { username: username },
     { $inc: { balance: -money.price }, $push: { expense: money } }
   );
-
+  if (!userToTransfer) return res.json(null);
   const responseUser = await UserModel.find({ username: username });
-  if (!userToTransfer) return res.json(false)
   res.json(responseUser);
 });
 router.post("/user/loan", async (req, res) => {
