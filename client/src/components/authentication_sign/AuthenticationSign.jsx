@@ -13,7 +13,7 @@ const Authentication = ({ text, onClick, page, userError }) => {
     username: "",
     email: "",
     password: "",
-    'confirm password': "",
+    "confirm password": "",
     income: "",
   });
   const checkEqualPassword = watch("password");
@@ -60,6 +60,8 @@ const Authentication = ({ text, onClick, page, userError }) => {
         )}
         {userError && <p id={styles.user_error}>{userError}</p>}
         <Button onClick={handleSubmit(onClick)} text={text} to={"/user"} />
+
+        {page === "sign up" && <Button style={{height : '10px'}} to={"/sign-in"} text={"already have an account?"}></Button>}
       </div>
     </div>
   );

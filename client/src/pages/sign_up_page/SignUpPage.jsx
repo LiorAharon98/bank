@@ -1,6 +1,6 @@
 import Authentication from "../../components/authentication_sign/AuthenticationSign";
 import { useDataProvider } from "../../context/Data";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 const SignUpPage = () => {
   const { addUser, specificUser } = useDataProvider();
@@ -15,7 +15,10 @@ const SignUpPage = () => {
   };
   return (
     <>
-      <Authentication userError={userError} page={"sign up"} onClick={handleClick} text={"sign up"}></Authentication>
+      <Authentication userError={userError} page={"sign up"} onClick={handleClick} text={"sign up"}>
+
+ 
+      </Authentication>
     </>
   );
 };

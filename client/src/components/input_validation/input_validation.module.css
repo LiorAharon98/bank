@@ -1,11 +1,16 @@
 .input {
-  width: 150px;
+  width: 200px;
   height: 30px;
   margin: 10px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
+  outline-color: rgb(0, 175, 249);
   text-align: center;
-  outline-color: green;
+}
+.input:hover {
+  outline-style: solid;
+  outline-width: 1px;
+  padding: 5px;
 }
 #error{
   color: red;
