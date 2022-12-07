@@ -25,6 +25,7 @@ const Footer = () => {
   return (
     <>
       <div className={styles.container}>
+        <img className={styles.img} src={`/bank/${images[index]}`} alt="img not found" />
         <About />
         <div className={styles.div}>
           <div>
@@ -33,7 +34,6 @@ const Footer = () => {
             <p>you also can send a message via whatsapp</p>
           </div>
         </div>
-        <img className={styles.img} src={`/bank/${images[index]}`} alt="img not found" />
       </div>
 
       <p id={styles.copyright}>{changeLanguage('copyright')}</p>

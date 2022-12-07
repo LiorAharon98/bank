@@ -2,15 +2,22 @@ import React from "react";
 import { useDataProvider } from "../../context/Data";
 import styles from "./current_account.module.css";
 import UserPage from "../../pages/user_page/UserPage";
-const CurrentAccount = () => {
-  const { changeLanguage, user } = useDataProvider();
-  const { balance, expense, income } = user;
+import { useEffect } from "react";
 
+const CurrentAccount = () => {
+  const { changeLanguage, user,setUser } = useDataProvider();
+  useEffect(()=>{
+    const data = sessionStorage.getItem('key')
+    setUser(JSON.parse(data))
+  },[])
+  const { balance, expense, income } = user;
+  if(Object.keys(user).length ===0)return
   expense.sort((a, b) => {
-    if (a.date > b.date) return -1;
-    if (a.date < b.date) return 1;
-    return 0
+    if (a.id > b.id) return -1;
+    if (a.id < b.id) return 1;
+    return 0;
   });
+  
   return (
     <UserPage text={true}>
       <h2>
@@ -25,10 +32,7 @@ const CurrentAccount = () => {
           return (
             <div key={index} className={styles.money_container}>
               <p>{date}</p>
-              <p
-                className={styles.money_details}
-                style={{ backgroundColor: moneyType === "transfer" ? "rgb(250,0,0)" : "rgb(0,200,0)" }}
-              >
+              <p className={`${styles.money_details} ${moneyType === "transfer" && styles.negative}`}>
                 {" "}
                 {changeLanguage(moneyType)} : {price} ₪
               </p>

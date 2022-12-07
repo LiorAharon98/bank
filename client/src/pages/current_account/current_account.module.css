@@ -1,12 +1,16 @@
 .expense_container {
   text-align: center;
 }
-.money_details {
+.money_details  {
   font-size: 18px;
   border-radius: 10px;
   padding: 2px;
-  width: 130px;
+  width: 150px;
   margin-left: 10px;
+  background-color: rgb(0,200,0);
+}
+.money_details.negative  {
+  background-color: red;
 }
 .money_container {
   display: flex;

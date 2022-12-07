@@ -27,6 +27,20 @@ const translation_he = {
   price : 'סכום',
   copyright : 'זכויות יוצרים על ידי ליאור אהרון 2022',
   'max loan' : 'הלוואה מקסמילית',
-  usernameToTransfer : 'למי להעביר'
+  usernameToTransfer : 'למי להעביר',
+  "searching user" : 'מחפש משתמש',
+  loading : 'טוען',
+  exit : 'יציאה',
+  'you are going to make action are you sure' : ' אתה עומד לבצע פעולה האם אתה בטוח',
+  'fill please' : 'נא למלא פרטים',
+  personal : 'איזור אישי',
+  'already have an account' : 'קיים במערכת',
+  'request has been declined' : "ההצעה נדחתה",
+  'loan-page' : 'אתה עומד לבצע הלוואה האם אתה בטוח',
+  'transfer-page' : 'אתה עומד לבצע העברה האם אתה בטוח',
+  register: 'הירשם'
+  
+
+  
 };
 export default translation_he;

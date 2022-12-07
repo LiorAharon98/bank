@@ -21,7 +21,7 @@ const InputValidation = ({ type, name, control, rules }) => {
               name={name}
               {...field}
             />
-            {error && <p id={styles.error}>{error.message}</p>}
+            {error && <p id={styles.error}>{changeLanguage(error.message)}</p>}
           </>
         );
       }}

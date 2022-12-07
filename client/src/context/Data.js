@@ -1,4 +1,4 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 export const DataContext = createContext();
@@ -9,37 +9,48 @@ export const useDataProvider = () => {
 const DataProvider = ({ children }) => {
   const baseUrl = "https://nodejs-bank.herokuapp.com/bank";
   const localhostUrl = "http://localhost:8000/bank";
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
+  const [toggleSidebar, setToggleSidebar] = useState(false);
 
   const { t } = useTranslation();
 
+  useEffect(() => {
+    if(Object.keys(user).length>0){
+    sessionStorage.setItem("key", JSON.stringify(user));
+    }
+  }, [user]);
   const addUser = (data) => {
-    const user = { ...data, balance: 5000, expense: [] };
-    axios.post(`${baseUrl}/sign-up`, user).then(() => {});
+    const maxLoan = Math.floor((data.income * 70) / 100);
+
+    const user = { ...data, balance: 5000, expense: [], maxLoan };
+    axios.post(`${baseUrl}/sign-up`, user);
   };
 
   const specificUser = async (username, password) => {
     const user = { username, password };
-    const response = await axios.post(`${baseUrl}/sign-in`, user).then((response) => {
-      setUser(response.data[0]);
-      return response.data[0];
-    });
-    return response;
+    const response = await axios.post(`${baseUrl}/sign-in`, user);
+    if (response.data[0]) setUser(response.data[0]);
+    return response.data[0];
   };
-  const transferMoney = async (username, price, usernameToTransfer) => {
-    const details = { username, money: { price, moneyType: "transfer", date: getDate() }, usernameToTransfer };
-    const response = await axios.post(`${localhostUrl}/user/transfer-money`, details).then((res) => {
-      if (!res.data) return false
-      setUser(res.data[0]);
-      return res.data[0];
-    });
-    return response;
+  const transferMoney = async (username, price, usernameToTransfer, expense) => {
+    const details = {
+      username,
+      money: { price, moneyType: "transfer", date: getDate(), id: expense.length },
+      usernameToTransfer,
+    };
+    const response = await axios.post(`${baseUrl}/user/transfer-money`, details);
+    if (!response) return false;
+    setUser(response.data[0]);
+    return response.data[0];
   };
-  const loanMoney = (username, price) => {
-    const user = { username, money: { price, moneyType: "loan", date: getDate() } };
-    axios.post(`${baseUrl}/user/loan`, user).then((res) => {
-      setUser(res.data[0]);
-    });
+  const loanMoney = async (username, price, expense) => {
+    const user = { username, money: { price, moneyType: "loan", date: getDate(), id: expense.length } };
+    const response = await axios.post(`${baseUrl}/user/loan`, user);
+    setUser(response.data[0]);
+  };
+
+  const logoutUser = () => {
+    setUser();
   };
   const getDate = () => {
     const date = new Date();
@@ -51,8 +62,19 @@ const DataProvider = ({ children }) => {
   const changeLanguage = (value) => {
     return t(value);
   };
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  const onToggleSidebar = () => {
+    setToggleSidebar((prev) => !prev);
+  };
 
   const value = {
+    setUser,
+    onToggleSidebar,
+    toggleSidebar,
+    scrollToTop,
     baseUrl,
     localhostUrl,
     user,
@@ -60,6 +82,7 @@ const DataProvider = ({ children }) => {
     specificUser,
     transferMoney,
     changeLanguage,
+    logoutUser,
 
     loanMoney,
   };

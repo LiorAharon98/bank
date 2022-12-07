@@ -1,0 +1,15 @@
+.container {
+  transition: 500ms;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(0, 117, 251);
+}
+.container_inactive {
+  transition: 500ms;
+  width: 0%;
+}

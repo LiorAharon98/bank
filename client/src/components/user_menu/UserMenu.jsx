@@ -7,7 +7,7 @@ const UserMenu = ({ toggleOptionFunc, toggle }) => {
     { label: "update details", num: 2, to: "/update-user-details" },
     { label: "transfer money", to: "/transfer-money" },
     { label: "loan", num: 4, to: "/loan" },
-    { label: "logout", to: "/" },
+    { label: "logout", to: "/"  },
   ];
   const { changeLanguage } = useDataProvider();
   return (
@@ -15,7 +15,7 @@ const UserMenu = ({ toggleOptionFunc, toggle }) => {
       {toggle &&
         li.map((li, index) => {
           return (
-            <li key={index} className={styles.li} onClick={toggleOptionFunc.bind(this, li)}>
+            <li   key={index}  className={styles.li} onClick={toggleOptionFunc.bind(this, li)}>
               {changeLanguage(li.label)}
             </li>
           );

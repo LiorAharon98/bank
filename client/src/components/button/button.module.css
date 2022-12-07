@@ -5,7 +5,9 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  height: 35px;
+  justify-content: center;
+  height: 25px;
+  width: 130px;
   border-radius: 10px;
   border: none;
   background-color: rgb(240, 240, 240);
@@ -17,4 +19,11 @@
   background-color: black;
   border: 1px solid white;
   transition: 0.5s;
+}
+@media (max-width:768px) {
+  .button{
+    height: 20px;
+    padding: 8px;
+    width: 150px;
+  }
 }

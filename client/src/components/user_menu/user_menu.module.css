@@ -23,6 +23,7 @@
 @media screen and (max-width: 768px) {
   .user_menu_container {
     margin-right: 5px;
+    height:500px;
 
   }
 }

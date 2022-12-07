@@ -3,23 +3,17 @@ import { Link } from "react-router-dom";
 import styles from "./header.module.css";
 import LanguageSelect from "../language_select/LanguageSelect";
 import { useDataProvider } from "../../context/Data";
+import HamburgerMenu from "../hamburger_menu/HamburgerMenu";
 const Header = () => {
-  const { changeLanguage } = useDataProvider();
-  const links = [
-    { label: "home", to: "/" },
-    { label: "private", to: "/private" },
-    { label: "business", to: "/business" },
-  ];
+  const { changeLanguage, onToggleSidebar } = useDataProvider();
+
+
   return (
     <div className={styles.page_container}>
-      {links.map((link, index) => {
-        return (
-          <Link   style={{textDecoration : 'none'}} key={index} to={link.to}>
-            <li  >{changeLanguage(link.label)}</li>
-          </Link>
-        );
-      })}
+
       <LanguageSelect />
+
+      <HamburgerMenu onClick={onToggleSidebar} style={{ backgroundColor: "rgb(0, 130, 255)" }} />
     </div>
   );
 };
