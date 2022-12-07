@@ -1,8 +1,10 @@
 import React from "react";
 import styles from "./homepage.module.css";
 import { useDataProvider } from "../../context/Data";
+import { useEffect } from "react";
 const Homepage = () => {
   const {changeLanguage } = useDataProvider();
+
   return (
     <>
       <div className={styles.container}>

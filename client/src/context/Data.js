@@ -15,10 +15,16 @@ const DataProvider = ({ children }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    if(Object.keys(user).length>0){
-    sessionStorage.setItem("key", JSON.stringify(user));
+    if (Object.keys(user).length > 0) {
+      sessionStorage.setItem("key", JSON.stringify(user));
     }
   }, [user]);
+  useEffect(() => {
+    const data = JSON.parse(sessionStorage.getItem("key"));
+    if (data) {
+      setUser(data);
+    }
+  }, []);
   const addUser = (data) => {
     const maxLoan = Math.floor((data.income * 70) / 100);
 
@@ -29,7 +35,10 @@ const DataProvider = ({ children }) => {
   const specificUser = async (username, password) => {
     const user = { username, password };
     const response = await axios.post(`${baseUrl}/sign-in`, user);
-    if (response.data[0]) setUser(response.data[0]);
+    if (response.data[0]) {
+      setUser(response.data[0]);
+      sessionStorage.setItem("key", JSON.stringify(response.data[0]));
+    }
     return response.data[0];
   };
   const transferMoney = async (username, price, usernameToTransfer, expense) => {
@@ -50,7 +59,8 @@ const DataProvider = ({ children }) => {
   };
 
   const logoutUser = () => {
-    setUser();
+    sessionStorage.removeItem("key")
+    setUser({});
   };
   const getDate = () => {
     const date = new Date();

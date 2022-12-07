@@ -5,19 +5,16 @@ import UserPage from "../../pages/user_page/UserPage";
 import { useEffect } from "react";
 
 const CurrentAccount = () => {
-  const { changeLanguage, user,setUser } = useDataProvider();
-  useEffect(()=>{
-    const data = sessionStorage.getItem('key')
-    setUser(JSON.parse(data))
-  },[])
+  const { changeLanguage, user, setUser } = useDataProvider();
+
+  if (Object.keys(user).length === 0) return;
   const { balance, expense, income } = user;
-  if(Object.keys(user).length ===0)return
   expense.sort((a, b) => {
     if (a.id > b.id) return -1;
     if (a.id < b.id) return 1;
     return 0;
   });
-  
+
   return (
     <UserPage text={true}>
       <h2>
