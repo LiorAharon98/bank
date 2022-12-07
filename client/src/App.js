@@ -14,7 +14,7 @@ import HomescreenSidebar from "./components/homescreen_sidebar/HomescreenSidebar
 function App() {
   return (
 
-    <BrowserRouter basename="https://lioraharon98.github.io/bank/">
+    <BrowserRouter basename="/bank">
       <Header />
       <HomescreenSidebar/>
       <Routes>
