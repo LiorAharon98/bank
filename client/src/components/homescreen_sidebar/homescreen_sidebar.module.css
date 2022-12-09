@@ -8,6 +8,7 @@
   align-items: center;
   flex-direction: column;
   background-color: rgb(0, 117, 251);
+  background: linear-gradient(to top , rgb(0, 123, 255),rgb(151, 217, 253));
 }
 .container_inactive {
   transition: 500ms;

@@ -11,7 +11,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background-color: white;
+    background: linear-gradient(to top , rgb(74, 185, 255),rgb(179, 226, 255));
     width: 350px;
     height: 100%;
     border-radius: 10px;
@@ -20,5 +20,6 @@
 @media screen and (max-width:768px) {
   .authentication_container{
     width: 98%;
+    height: 95%;
   }
 }

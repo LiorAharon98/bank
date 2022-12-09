@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: rgb(2, 136, 239);
+  background: linear-gradient(to top, rgb(125, 191, 249),rgb(0, 139, 246));
   border-radius: 5px;
   height: 750px;
   width: 250px;
@@ -24,6 +24,5 @@
   .user_menu_container {
     margin-right: 5px;
     height:500px;
-
   }
 }

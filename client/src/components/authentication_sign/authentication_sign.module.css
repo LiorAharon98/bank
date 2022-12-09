@@ -1,5 +1,7 @@
 #user_error {
   color: red;
+  font-size: 18px;
+  text-decoration: underline;
   padding: 0px;
   margin: 0px;
 }

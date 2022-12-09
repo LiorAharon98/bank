@@ -1,11 +1,13 @@
 .input {
   width: 230px;
   height: 30px;
-  margin: 2px;
+  margin: 10px;
   border: none;
-font-size: 18px;
+  font-size: 18px;
   outline: none;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0);
+  border-bottom: 1px solid rgb(0, 162, 255);
 }
 
 .inp_label_container {
@@ -13,16 +15,23 @@ font-size: 18px;
   display: flex;
   height: 80px;
   flex-direction: column;
+  color: rgb(255, 255, 255);
+  font-family: Arial, Helvetica, sans-serif;
 
   justify-content: space-between;
 }
 .inp_label_container:hover {
-  border-bottom: 1px solid rgb(0, 162, 255);
   color: rgb(1, 165, 247);
 }
 #error {
   color: red;
   font-size: 18px;
-  margin: 5px;
+  margin: 0px;
 }
 
+@media screen and (max-width: 768px) {
+  .input {
+    margin: 0px;
+    width: 150px;
+  }
+}
