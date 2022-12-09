@@ -19,7 +19,7 @@
 
 @media screen and (max-width:768px) {
   .authentication_container{
-    width: 98%;
+    width: 100%;
     height: 95%;
   }
 }

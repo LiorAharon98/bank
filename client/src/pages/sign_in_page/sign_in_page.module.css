@@ -1,6 +1,11 @@
-.container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 52%;
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 52%;
+}
+@media screen and (max-width: 768px) {
+  .container {
+    width: 44%;
+  }
 }
