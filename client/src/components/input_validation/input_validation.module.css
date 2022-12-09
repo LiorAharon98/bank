@@ -1,19 +1,28 @@
 .input {
-  width: 200px;
+  width: 230px;
   height: 30px;
-  margin: 10px;
+  margin: 2px;
   border: none;
-  border-radius: 10px;
-  outline-color: rgb(0, 175, 249);
+font-size: 18px;
+  outline: none;
   text-align: center;
 }
-.input:hover {
-  outline-style: solid;
-  outline-width: 1px;
-  padding: 5px;
+
+.inp_label_container {
+  font-size: 18px;
+  display: flex;
+  height: 80px;
+  flex-direction: column;
+
+  justify-content: space-between;
 }
-#error{
+.inp_label_container:hover {
+  border-bottom: 1px solid rgb(0, 162, 255);
+  color: rgb(1, 165, 247);
+}
+#error {
   color: red;
   font-size: 18px;
   margin: 5px;
 }
+

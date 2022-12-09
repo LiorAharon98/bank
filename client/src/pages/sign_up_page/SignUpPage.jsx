@@ -19,8 +19,11 @@ const SignUpPage = () => {
   };
   return (
     <SignCard>
+      <h2>sign up</h2>
       <Authentication userError={userError} page={"sign up"} onClick={handleClick} text={"sign up"} />
-      <Link to={"/sign-in"}>{changeLanguage("already have an account")}?</Link>
+      <Link style={{ color: "rgb(1, 165, 247)" }} to={"/sign-in"}>
+        {changeLanguage("already have an account")}?
+      </Link>
     </SignCard>
   );
 };

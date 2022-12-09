@@ -8,10 +8,10 @@
   justify-content: center;
   height: 25px;
   width: 130px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
-  background-color: rgb(240, 240, 240);
-  color: rgb(32, 140, 249);
+  background-color: rgb(5, 156, 249);
+  color: white;
   font-size: 15px;
   padding: 10px;
 }
@@ -22,8 +22,8 @@
 }
 @media (max-width:768px) {
   .button{
-    height: 20px;
+    height: 25px;
     padding: 8px;
-    width: 150px;
+    width: 250px;
   }
 }

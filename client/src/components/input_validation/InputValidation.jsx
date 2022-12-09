@@ -12,17 +12,18 @@ const InputValidation = ({ type, name, control, rules }) => {
       rules={rules}
       render={({ field, fieldState: { error } }) => {
         return (
-          <>
+          <div className={styles.inp_label_container}>
+          <label htmlFor={name}>{changeLanguage(name)}</label>
             <input
+              id={name}
               style={{ border: error && "1px solid red" }}
               className={styles.input}
               type={type}
-              placeholder={changeLanguage(name)}
               name={name}
               {...field}
             />
             {error && <p id={styles.error}>{changeLanguage(error.message)}</p>}
-          </>
+          </div>
         );
       }}
     />
