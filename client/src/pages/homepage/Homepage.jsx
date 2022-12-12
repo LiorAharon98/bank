@@ -3,8 +3,12 @@ import styles from "./homepage.module.css";
 import { useDataProvider } from "../../context/Data";
 import { useEffect } from "react";
 const Homepage = () => {
-  const {changeLanguage } = useDataProvider();
+  const {changeLanguage,onDisplayFooter } = useDataProvider();
 
+  useEffect(()=>{
+    onDisplayFooter(true)
+
+  },[])
   return (
     <>
       <div className={styles.container}>

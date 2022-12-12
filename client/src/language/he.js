@@ -34,11 +34,12 @@ const translation_he = {
   'you are going to make action are you sure' : ' אתה עומד לבצע פעולה האם אתה בטוח',
   'fill please' : 'נא למלא פרטים',
   personal : 'איזור אישי',
-  'already have an account' : 'קיים במערכת',
+  'have an account' : 'קיים במערכת',
   'request has been declined' : "ההצעה נדחתה",
   'loan-page' : 'אתה עומד לבצע הלוואה האם אתה בטוח',
   'transfer-page' : 'אתה עומד לבצע העברה האם אתה בטוח',
-  register: 'הירשם'
+  register: 'הירשם',
+  'dont have an account' : 'אין חשבון'
   
 
   

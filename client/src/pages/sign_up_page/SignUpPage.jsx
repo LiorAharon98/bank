@@ -1,12 +1,11 @@
 import Authentication from "../../components/authentication_sign/AuthenticationSign";
 import { useDataProvider } from "../../context/Data";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
-import Button from "../../components/button/Button";
 import SignCard from "../../components/sign_card/SignCard";
 const SignUpPage = () => {
-  const { addUser, specificUser, scrollToTop, changeLanguage } = useDataProvider();
+  const { addUser, specificUser, scrollToTop, changeLanguage,onDisplayFooter } = useDataProvider();
   const [userError, setUserError] = useState(false);
   const navigate = useNavigate();
   const handleClick = async (data) => {
@@ -17,8 +16,12 @@ const SignUpPage = () => {
     navigate("/sign-in");
     scrollToTop();
   };
+  useEffect(()=>{
+    onDisplayFooter(false)
+
+  },[])
   return (
-    <SignCard>
+    <SignCard >
       <h2>sign up</h2>
       <Authentication userError={userError} page={"sign up"} onClick={handleClick} text={"sign up"} />
       <Link style={{ color: "rgb(1, 165, 247)" }} to={"/sign-in"}>

@@ -11,6 +11,7 @@ const DataProvider = ({ children }) => {
   const localhostUrl = "http://localhost:8000/bank";
   const [user, setUser] = useState({});
   const [toggleSidebar, setToggleSidebar] = useState(false);
+  const [displayFooter,setDisplayFooter] = useState(true)
 
   const { t } = useTranslation();
 
@@ -80,7 +81,13 @@ const DataProvider = ({ children }) => {
     setToggleSidebar((prev) => !prev);
   };
 
+  const onDisplayFooter = (value)=>{
+    if(window.innerWidth <720) setDisplayFooter(value)
+  }
+
   const value = {
+    onDisplayFooter,
+    displayFooter,
     setUser,
     onToggleSidebar,
     toggleSidebar,

@@ -5,12 +5,13 @@ import { useDataProvider } from "../../context/Data";
 import { useNavigate, Link } from "react-router-dom";
 import SignCard from "../../components/sign_card/SignCard";
 import styles from "./sign_in_page.module.css";
+import { useEffect } from "react";
 
 const SignInPage = () => {
   const [spinner, setSpinner] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
-  const { specificUser, scrollToTop, changeLanguage } = useDataProvider();
+  const { specificUser, scrollToTop, changeLanguage,onDisplayFooter, } = useDataProvider();
   const handleClick = async (data) => {
     setSpinner(true);
     const { username, password } = data;
@@ -22,6 +23,11 @@ const SignInPage = () => {
     navigate("/user/current-account");
     scrollToTop();
   };
+
+  useEffect(()=>{
+    onDisplayFooter(false)
+
+  },[])
   return (
     <>
       {spinner && <LoadingScreen text={"searching user"} />}
@@ -29,10 +35,9 @@ const SignInPage = () => {
         <h2>sign in</h2>
         <Authentication userError={error} onClick={handleClick} text={"sign in"} />
         <div className={styles.container}>
-          <p>have an account?</p>
 
-          <Link style={{ color: "rgb(1, 165, 247)" }} to={"/sign-up"}>
-            {changeLanguage("register")}
+          <Link style={{ color: "rgb(1, 165, 247)" , textAlign : 'center' }} to={"/sign-up"}>
+            {changeLanguage("dont have an account")}?
           </Link>
         </div>
       </SignCard>
