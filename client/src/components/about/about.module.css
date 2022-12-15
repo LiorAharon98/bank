@@ -1,11 +1,22 @@
 .about {
-  padding-left: 15px;
-  width: 30%;
-  background-color: rgba(5, 191, 219, 0.869);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: white;
   border-radius: 10px;
+  width: 100%;
+  background: linear-gradient(to right, rgb(106, 183, 255), rgba(0, 42, 255, 0.963));
+}
+.container_tag {
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 @media (max-width: 768px) {
   .about {
-    width: 96%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 }

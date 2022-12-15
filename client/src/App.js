@@ -9,11 +9,8 @@ import CurrentAccount from "./pages/current_account/CurrentAccount";
 import UpdateUserDetails from "./pages/update_user_details/UpdateUserDetails";
 import TransferMoney from "./pages/transfer_money/TransferMoney";
 import Loan from "./pages/loan/Loan";
-import Footer from "./components/footer/Footer";
 import HomescreenSidebar from "./components/homescreen_sidebar/HomescreenSidebar";
-import { useDataProvider } from "./context/Data";
 function App() {
-  const {displayFooter} = useDataProvider()
   return (
     <HashRouter >
       <Header />
@@ -29,7 +26,7 @@ function App() {
         <Route path="/user/update-user-details" element={<UpdateUserDetails />}></Route>
         <Route path="/user/current-account" element={<CurrentAccount />}></Route>
       </Routes>
-     {displayFooter && <Footer/>}
+   
     </HashRouter>
   );
 }

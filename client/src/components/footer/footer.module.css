@@ -2,17 +2,6 @@
   display: flex;
   justify-content: space-between;
 }
-.div {
-  border-radius: 10px;
-  background-color: rgba(1, 166, 255, 0.792);
-  padding-left: 15px;
-  width: 30%;
-}
-img {
-  border-radius: 5px;
-  width: 40%;
-  height: 250px;
-}
 
 #copyright {
   margin: 0px;
@@ -23,22 +12,12 @@ img {
 
 @media screen and (max-width: 768px) {
   .container {
+    width: 430px;
     display: flex;
     flex-direction: column;
   }
-  .div {
-    margin: 2px 0px 2px 0px;
-    height: max-content;
-    width: 96%;
-    display: flex;
-    flex-direction: column;
-  }
-  img {
-    margin-bottom: 2px;
-    height: 200px;
-    width: 100%;
-  }
+
   #copyright {
-    width: 100%;
+    width: 102.2%;
   }
 }
