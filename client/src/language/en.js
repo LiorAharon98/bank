@@ -5,7 +5,7 @@ const translation_en = {
   private: "private",
   business: "business",
   support: "support",
-  welcome: "welcome to my bank! enjoy",
+  welcome: "welcome to my bank!",
   enteraccount: "enter to account",
   createnewaccount: "create new account",
   signin: "sign in",

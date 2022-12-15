@@ -1,6 +1,6 @@
 const translation_he = {
   hello: "שלום",
-  welcome: "ברוכים הבאים לבנק שלי! תהנו",
+  welcome: "ברוכים הבאים לבנק שלי!",
   'enter account': "כניסה לחשבון",
   'create new account': "יצירת חשבון",
   home: "דף הבית",

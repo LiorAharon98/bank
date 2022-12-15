@@ -29,9 +29,12 @@ body {
 }
 
 @media (max-width: 768px) {
+  .container{
+    width: 100%;
+  }
   .img {
     border-radius: 10px;
-    width: 104.5%;
+    width: 100%;
   }
   .img_container {
     min-height: 50vh;

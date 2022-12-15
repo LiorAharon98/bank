@@ -12,12 +12,11 @@
 
 @media screen and (max-width: 768px) {
   .container {
-    width: 430px;
     display: flex;
     flex-direction: column;
   }
 
   #copyright {
-    width: 102.2%;
+    width: 100%;
   }
 }
