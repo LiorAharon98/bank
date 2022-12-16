@@ -23,7 +23,7 @@ const SignUpPage = () => {
   },[])
   return (
     <SignCard >
-      <h3 className={styles.sign_tag} >sign up</h3>
+      <h3 className={styles.sign_tag} >{changeLanguage('sign up')}</h3>
       <Authentication userError={userError} page={"sign up"} onClick={handleClick} text={"sign up"} />
       <Link style={{ color: "rgb(1, 165, 247)" }} to={"/sign-in"}>
         {changeLanguage("already have an account")}?

@@ -48,6 +48,7 @@ const translation_he = {
   'credit card' : 'כרטיסי אשראי',
   services : 'שירותים',
   branches : 'סניפים',
+  'already have an account' : 'יש חשבון'
   
 
   
