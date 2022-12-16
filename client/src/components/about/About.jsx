@@ -6,22 +6,23 @@ const About = () => {
   return (
     <>
       <div className={styles.about}>
-        <div>
-          <h2>{changeLanguage("about")}</h2>
-          <p>a new bank by the ceo : lior aharon!</p>
-          <p>we happy to announce the new bank a new way to transfer money and pay bills</p>
+        <div className={styles.container_tag}>
+          <p>{changeLanguage("support")}</p>
+          <p>{changeLanguage("contact")}</p>
+          <p>{changeLanguage("help")}</p>
+          <p>{changeLanguage("chat")}</p>
         </div>
         <div className={styles.container_tag}>
-          <p>support</p>
-          <p>contact</p>
-          <p>help</p>
-          <p>chat</p>
+          <p>{changeLanguage("services")}</p>
+          <p>{changeLanguage("credit card")}</p>
+          <p>{changeLanguage("branches")}</p>
+          <p>{changeLanguage("about")}</p>
         </div>
         <div className={styles.container_tag}>
-          <p>support</p>
-          <p>contact</p>
-          <p>help</p>
-          <p>chat</p>
+          <p>{changeLanguage("accessibility")}</p>
+          <p>{changeLanguage("business")}</p>
+          <p>{changeLanguage("students")}</p>
+          <p>{changeLanguage("support")}</p>
         </div>
       </div>
     </>

@@ -39,7 +39,15 @@ const translation_he = {
   'loan-page' : 'אתה עומד לבצע הלוואה האם אתה בטוח',
   'transfer-page' : 'אתה עומד לבצע העברה האם אתה בטוח',
   register: 'הירשם',
-  'dont have an account' : 'אין חשבון'
+  'dont have an account' : 'אין חשבון',
+  students : 'סטודנטים',
+  accessibility : 'נגישות',
+  contact : 'יצירת קשר',
+  help : 'עזרה',
+  chat : 'צאט',
+  'credit card' : 'כרטיסי אשראי',
+  services : 'שירותים',
+  branches : 'סניפים',
   
 
   

@@ -32,7 +32,7 @@ const SignInPage = () => {
     <>
       {spinner && <LoadingScreen text={"searching user"} />}
       <SignCard page={"sign in"}>
-        <h2>sign in</h2>
+        <h2 style={{color :'white'}}>sign in</h2>
         <Authentication userError={error} onClick={handleClick} text={"sign in"} />
         <div className={styles.container}>
 

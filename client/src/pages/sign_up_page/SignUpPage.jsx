@@ -3,6 +3,7 @@ import { useDataProvider } from "../../context/Data";
 import { useNavigate } from "react-router-dom";
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
+import styles from "./sign_up_page.module.css"
 import SignCard from "../../components/sign_card/SignCard";
 const SignUpPage = () => {
   const { addUser, specificUser, scrollToTop, changeLanguage,onDisplayFooter } = useDataProvider();
@@ -22,7 +23,7 @@ const SignUpPage = () => {
   },[])
   return (
     <SignCard >
-      <h2>sign up</h2>
+      <h3 className={styles.sign_tag} >sign up</h3>
       <Authentication userError={userError} page={"sign up"} onClick={handleClick} text={"sign up"} />
       <Link style={{ color: "rgb(1, 165, 247)" }} to={"/sign-in"}>
         {changeLanguage("already have an account")}?
