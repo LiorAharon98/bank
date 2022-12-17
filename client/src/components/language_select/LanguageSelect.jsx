@@ -13,8 +13,8 @@ const LanguageSelect = () => {
         handleEvent(e.target.value);
       }}
       >
-      <option value="en">english</option>
-      <option value="he">hebrew</option>
+      <option className={styles.option} value="en">english</option>
+      <option className={styles.option} value="he">hebrew</option>
     </select>
   );
 };

@@ -6,15 +6,14 @@ import { useDataProvider } from "../../context/Data";
 import LoadingScreen from "../../components/loading_screen/LoadingScreen";
 import styles from "./admin_page.module.css";
 const AdminPage = () => {
-  
   const { changeLanguage, baseUrl } = useDataProvider();
-  const [spinner,setSpinner] = useState(false)
+  const [spinner, setSpinner] = useState(false);
   const [users, setUsers] = useState([]);
   const fetchUsers = () => {
-    setSpinner(true)
+    setSpinner(true);
     axios.get(`${baseUrl}/admin`).then((response) => {
-      setUsers(response.data)
-      setSpinner(false)
+      setUsers(response.data);
+      setSpinner(false);
     });
   };
   useEffect(() => {
@@ -22,32 +21,38 @@ const AdminPage = () => {
   }, []);
   return (
     <>
-     {spinner && <LoadingScreen text={'loading'}/> }
-    <div className={styles.container}>
-      <table className={styles.table_container}>
-        <tbody>
-          <tr className={styles.tr_container}>
-            <td> {changeLanguage("username")}</td>
-            <td>{changeLanguage("password")}</td>
-            <td>{changeLanguage("balance")}</td>
-            <td>{changeLanguage("status")}</td>
-          </tr>
+      {spinner && <LoadingScreen text={"loading"} />}
+      <div className={styles.container}>
+        <table className={styles.table_container}>
+          <tbody className={styles.tbody_container}>
+            <tr className={styles.tr_container}>
+              <td className={styles.user_info}> {changeLanguage("username")}</td>
+              <td className={styles.user_info}>{changeLanguage("password")}</td>
+              <td className={styles.user_info}>{changeLanguage("balance")}</td>
+              <td className={styles.user_info}>{changeLanguage("income")}</td>
+              <td className={styles.user_info}>{changeLanguage("maxLoan")}</td>
+              <td className={styles.user_info}>{changeLanguage("status")}</td>
+            </tr>
 
-          {users.map((user, index) => {
-            const { password, username, balance } = user;
-            return (
-              <tr key={index} className={styles.tr_container}>
-                <td key={index}>{username}</td>
-                <td>{password}</td>
-                <td>{balance}</td>
-                <td style={{ backgroundColor: balance < 0 ? "red" : "green", width: "20%" }}> </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
-            </>
+            {users.map((user, index) => {
+              const { password, username, balance, maxLoan, income } = user;
+              return (
+                <tr key={index} className={styles.tr_container}>
+                  <td className={styles.user_info} key={index}>
+                    {username}
+                  </td>
+                  <td className={styles.user_info}>{password}</td>
+                  <td className={styles.user_info}>{balance}</td>
+                  <td className={styles.user_info}>{income}</td>
+                  <td className={styles.user_info}>{maxLoan}</td>
+                  <td className={balance > 0 ? styles.noun : styles.overdraft}></td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 

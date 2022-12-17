@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background: linear-gradient(to top, rgb(74, 185, 255), rgb(179, 226, 255));
+  background: linear-gradient(to top, rgb(146, 213, 255), rgb(66, 182, 255));
   width: 350px;
   height: 90%;
   border-radius: 10px;
@@ -20,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background: linear-gradient(to top, rgb(74, 185, 255), rgb(179, 226, 255));
+  background: linear-gradient(to top, rgb(74, 185, 255), rgb(132, 207, 254));
   width: 350px;
   height: 100%;
   border-radius: 10px;
