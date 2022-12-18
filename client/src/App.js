@@ -9,12 +9,13 @@ import CurrentAccount from "./pages/current_account/CurrentAccount";
 import UpdateUserDetails from "./pages/update_user_details/UpdateUserDetails";
 import TransferMoney from "./pages/transfer_money/TransferMoney";
 import Loan from "./pages/loan/Loan";
-import HomescreenSidebar from "./components/homescreen_sidebar/HomescreenSidebar";
+import HomeScreenSidebar from "./components/home_screen_side_bar/HomeScreenSidebar";
+import CreditCard from "./pages/credit_card/CreditCard";
 function App() {
   return (
     <HashRouter >
       <Header />
-      <HomescreenSidebar />
+      <HomeScreenSidebar />
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/sign-in" element={<SignInPage />}></Route>
@@ -25,6 +26,7 @@ function App() {
         <Route path="/user/transfer-money" element={<TransferMoney />}></Route>
         <Route path="/user/update-user-details" element={<UpdateUserDetails />}></Route>
         <Route path="/user/current-account" element={<CurrentAccount />}></Route>
+        <Route path="/user/credit-card" element={<CreditCard />}></Route>
       </Routes>
    
     </HashRouter>

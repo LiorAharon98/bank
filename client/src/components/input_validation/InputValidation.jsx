@@ -15,6 +15,7 @@ const InputValidation = ({ type, name, control, rules }) => {
           <div className={styles.inp_label_container}>
           <label htmlFor={name}>{changeLanguage(name)}</label>
             <input
+            
               id={name}
               style={{ borderBottomColor: error && "red" , }}
               className={styles.input}

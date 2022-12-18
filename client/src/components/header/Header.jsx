@@ -7,14 +7,15 @@ import HamburgerMenu from "../hamburger_menu/HamburgerMenu";
 const Header = () => {
   const { changeLanguage, onToggleSidebar } = useDataProvider();
 
-
   return (
-    <div className={styles.page_container}>
+    <>
+      <div className={styles.page_container}>
+        <p className={styles.bank_title}>{changeLanguage("Bank")}</p>
+        <LanguageSelect />
 
-      <LanguageSelect />
-
-      <HamburgerMenu onClick={onToggleSidebar} style={{ backgroundColor: "rgb(0, 130, 255)" }} />
-    </div>
+        <HamburgerMenu onClick={onToggleSidebar} style={{ backgroundColor: "rgb(0, 130, 255)" }} />
+      </div>
+    </>
   );
 };
 

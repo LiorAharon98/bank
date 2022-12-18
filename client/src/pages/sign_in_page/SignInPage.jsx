@@ -28,6 +28,7 @@ const SignInPage = () => {
     onDisplayFooter(false)
 
   },[])
+
   return (
     <>
       {spinner && <LoadingScreen text={"searching user"} />}

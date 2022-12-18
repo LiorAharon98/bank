@@ -4,6 +4,7 @@ import styles from "./user_menu.module.css";
 const UserMenu = ({ toggleOptionFunc, toggle }) => {
   const li = [
     { label: "current account", to: "/current-account" },
+    { label: "credit card", to: "/credit-card" },
     { label: "update details", num: 2, to: "/update-user-details" },
     { label: "transfer money", to: "/transfer-money" },
     { label: "loan", num: 4, to: "/loan" },

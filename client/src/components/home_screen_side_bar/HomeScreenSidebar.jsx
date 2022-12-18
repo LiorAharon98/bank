@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./homescreen_sidebar.module.css";
+import styles from "./home_screen_side_bar.module.css";
 import Button from "../button/Button";
 import { useDataProvider } from "../../context/Data";
-const HomescreenSidebar = () => {
+const HomeScreenSidebar = () => {
   const { toggleSidebar, user, onToggleSidebar } = useDataProvider();
   const buttons = [
     { text: "home", to: "/" },
@@ -26,4 +26,4 @@ const HomescreenSidebar = () => {
   );
 };
 
-export default HomescreenSidebar;
+export default HomeScreenSidebar;

@@ -23,10 +23,12 @@ const Homepage = () => {
     }, 2000);
     return () => clearInterval(interval);
   });
+
+
   return (
     <>
       <div className={styles.container}>
-        <h1 className={styles.welcome_tag}>{changeLanguage("welcome")}!</h1>
+        <h2 className={styles.welcome_tag}>{changeLanguage("welcome")}!</h2>
         <div className={styles.img_container}>
           <img className={styles.img} src={`/bank/${images[index]}`} alt="img not found" />
         </div>

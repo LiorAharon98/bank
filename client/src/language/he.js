@@ -1,6 +1,6 @@
 const translation_he = {
   hello: "שלום",
-  welcome: "ברוכים הבאים לבנק שלי!",
+  welcome: "ברוכים הבאים לבנק שלי",
   'enter account': "כניסה לחשבון",
   'create new account': "יצירת חשבון",
   home: "דף הבית",
@@ -48,7 +48,13 @@ const translation_he = {
   'credit card' : 'כרטיסי אשראי',
   services : 'שירותים',
   branches : 'סניפים',
-  'already have an account' : 'יש חשבון'
+  'already have an account' : 'יש חשבון',
+  status : 'סטטוס',
+  maxLoan : 'הלוואה מקסימלית',
+  Bank : 'בנק',
+  english : 'אנגלית',
+  hebrew : 'עברית'
+
   
 
   

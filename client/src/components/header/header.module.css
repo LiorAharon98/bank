@@ -2,9 +2,15 @@
   height: 40px;
 
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   display: flex;
   background-color: rgb(248, 248, 248);
+}
+.bank_title{
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
+  color:rgb(0, 115, 255);
 }
 li {
   list-style: none;
@@ -20,9 +26,12 @@ li:hover {
 @media screen and (max-width: 768px) {
   .page_container {
     justify-content: space-between;
-    height: 60px;
+    height: 45px;
     position: sticky;
     top: 0px;
     width: 100%;
+  }
+  .bank_title{
+    padding: 0px;
   }
 }

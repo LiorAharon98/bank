@@ -5,4 +5,15 @@
   padding: 0px;
   margin: 0px;
 }
-
+.input_password{
+  display: flex;
+  align-items: center;
+}
+.password_icon{
+  padding: 10px;
+  font-size: 18px;
+}
+.password_icon:hover{
+  font-size: 22px;
+  color: rgb(217, 217, 217);
+}

@@ -29,8 +29,8 @@ const DataProvider = ({ children }) => {
   const addUser = (data) => {
     const maxLoan = Math.floor((data.income * 70) / 100);
 
-    const user = { ...data, balance: 5000, expense: [], maxLoan };
-    axios.post(`${baseUrl}/sign-up`, user);
+    const user = { ...data, balance: 5000, expense: [], maxLoan , creditCard : {} };
+    axios.post(`${localhostUrl}/sign-up`, user);
   };
 
   const specificUser = async (username, password) => {

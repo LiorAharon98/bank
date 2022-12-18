@@ -40,15 +40,21 @@
 
 @media screen and (max-width: 768px) {
   .table_container {
-    width: 100%;
+    width: 97%;
     border: none;
-    height: 400px;
+    height:  30%;
   }
   .container {
+    /* width: 95%; */
   }
   .user_info {
+    /* height: 40px; */
     font-size: 16px;
   }
   .tr_container {
+    /* height: 10px; */
+  }
+  .noun{
+    width: 50px;
   }
 }
