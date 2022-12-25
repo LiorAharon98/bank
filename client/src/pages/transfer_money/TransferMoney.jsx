@@ -14,7 +14,7 @@ const TransferMoney = () => {
   const { username, balance, expense } = user;
   const handleClick = async (data) => {
     const { price, usernameToTransfer } = data;
-    if (price === "" || price < 0) return setError("cannot be empty!");
+    if (price === "" || price < 0) return setError("please fill data");
     if (price > balance) return setError("we not allowed to be at overdraft");
     const user = await transferMoney(username, Number(price), usernameToTransfer, expense);
     if (!user) {

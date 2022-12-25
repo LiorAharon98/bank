@@ -30,7 +30,13 @@ const Input = ({ onClick, inpNumber, inpData, error, rules, text, toggle, toggle
       })}
 
       <Button text={text} onClick={toggleFunc.bind(this, true)} />
-      {error && <p className={styles.error_tag}>{changeLanguage(error)} !</p>}
+      {error && 
+      <div className={styles.error_container}>
+
+      <p className={styles.error_tag}>{changeLanguage(error)} !</p>
+      </div>
+      }
+  
     </div>
   );
 };

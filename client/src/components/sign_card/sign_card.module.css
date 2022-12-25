@@ -12,7 +12,7 @@
   justify-content: space-around;
   background: linear-gradient(to top, rgb(146, 213, 255), rgb(66, 182, 255));
   width: 350px;
-  height: 90%;
+  height: 80%;
   border-radius: 10px;
 }
 .sign_up_authentication_container {
@@ -32,7 +32,7 @@
   }
   .sign_in_authentication_container {
     width: 97%;
-    height: 100%;
+    height: 85%;
   }
   .container {
     height: 850px;

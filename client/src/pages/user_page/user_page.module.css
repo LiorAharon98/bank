@@ -10,15 +10,16 @@
   padding-left: 20px;
   justify-content: space-around;
   color: white;
-  background-color: rgba(4, 141, 221, 0.794);
+ 
+  background: linear-gradient(to bottom,rgba(0, 123, 255, 0.422),rgb(102, 168, 255));
   width: 30%;
-  height: 450px;
+  height: 550px;
   border-radius: 10px;
 }
 
 .right_bar {
   display: flex;
-  background-color: rgb(2, 136, 239);
+  background: linear-gradient(to bottom,rgb(3, 124, 253),rgb(102, 168, 255));
   min-height: 90vh;
   width: 50px;
   border-radius: 5px;
@@ -30,7 +31,7 @@
 
 @media screen and (max-width: 768px) {
   .container {
-    min-height: 20vh;
+    min-height: 90vh;
   }
   .right_bar {
     display: none;

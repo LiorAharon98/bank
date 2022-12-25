@@ -28,6 +28,7 @@ setUser(JSON.parse(data))
 
     navigate(`/user${li.to}`);
   };
+ 
   return (
     <>
       <HamburgerMenu onClick={toggle} className={true} />
@@ -37,7 +38,7 @@ setUser(JSON.parse(data))
       </h1>
       <div className={styles.container}>
         <UserMenu toggleOptionFunc={toggleOptionFunc} toggle={toggleMenu} />
-        <div className={styles.middle_container} style={{ height: text ? "max-content" : "450px" }}>
+        <div className={styles.middle_container} style={{ height: text ? "max-content" : "550px" }}>
           {children}
         </div>
         <div className={styles.right_bar}></div>

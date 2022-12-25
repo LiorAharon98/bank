@@ -8,12 +8,13 @@
 .input_password{
   display: flex;
   align-items: center;
+  margin-left: 20px;
 }
 .password_icon{
-  padding: 10px;
+  padding: 10px 0px 10px 0px;
   font-size: 18px;
 }
 .password_icon:hover{
-  font-size: 22px;
+  font-size: 20px;
   color: rgb(217, 217, 217);
 }

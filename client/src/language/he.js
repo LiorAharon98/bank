@@ -45,7 +45,7 @@ const translation_he = {
   contact : 'יצירת קשר',
   help : 'עזרה',
   chat : 'צאט',
-  'credit card' : 'כרטיסי אשראי',
+  'credit card' : 'כרטיס אשראי',
   services : 'שירותים',
   branches : 'סניפים',
   'already have an account' : 'יש חשבון',
@@ -53,7 +53,14 @@ const translation_he = {
   maxLoan : 'הלוואה מקסימלית',
   Bank : 'בנק',
   english : 'אנגלית',
-  hebrew : 'עברית'
+  hebrew : 'עברית',
+  'card number' : 'מספר כרטיס',
+  'expiration date' : 'תאריך תפוגה',
+  'upload profile picture' : 'העלאת תמונה פרופיל',
+  'users not found' : ' משתמש לא נמצא',
+  'please fill data' : 'נא למלא פרטים',
+  'we not allowed to be at overdraft' : 'אנחנו לא מאשרים להיות בחריגה'
+
 
   
 

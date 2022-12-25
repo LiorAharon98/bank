@@ -11,7 +11,7 @@ const DataProvider = ({ children }) => {
   const localhostUrl = "http://localhost:8000/bank";
   const [user, setUser] = useState({});
   const [toggleSidebar, setToggleSidebar] = useState(false);
-  const [displayFooter,setDisplayFooter] = useState(true)
+  const [displayFooter, setDisplayFooter] = useState(true);
 
   const { t } = useTranslation();
 
@@ -29,8 +29,8 @@ const DataProvider = ({ children }) => {
   const addUser = (data) => {
     const maxLoan = Math.floor((data.income * 70) / 100);
 
-    const user = { ...data, balance: 5000, expense: [], maxLoan , creditCard : {} };
-    axios.post(`${localhostUrl}/sign-up`, user);
+    const user = { ...data, balance: 5000, expense: [], maxLoan };
+    axios.post(`${baseUrl}/sign-up`, user);
   };
 
   const specificUser = async (username, password) => {
@@ -49,7 +49,7 @@ const DataProvider = ({ children }) => {
       usernameToTransfer,
     };
     const response = await axios.post(`${baseUrl}/user/transfer-money`, details);
-    if (!response) return false;
+    if (!response.data) return false;
     setUser(response.data[0]);
     return response.data[0];
   };
@@ -58,9 +58,23 @@ const DataProvider = ({ children }) => {
     const response = await axios.post(`${baseUrl}/user/loan`, user);
     setUser(response.data[0]);
   };
+  const addCreditCard = async (username) => {
+    const creditCard = {
+      cardHolder: username,
+      cardNumber: [4580, 3900, 3213, 4341],
+      expireData: { month: 10, year: 26 },
+      cvv: 712,
+    };
 
+    const response = await axios.post(`${baseUrl}/user/credit-card`, creditCard);
+    setUser(response.data[0]);
+  };
+
+  const changeDetails = async (data) => {
+    const response = await axios.post(`${baseUrl}/user/update-user-details`, data);
+  };
   const logoutUser = () => {
-    sessionStorage.removeItem("key")
+    sessionStorage.removeItem("key");
     setUser({});
   };
   const getDate = () => {
@@ -73,6 +87,7 @@ const DataProvider = ({ children }) => {
   const changeLanguage = (value) => {
     return t(value);
   };
+
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -81,11 +96,13 @@ const DataProvider = ({ children }) => {
     setToggleSidebar((prev) => !prev);
   };
 
-  const onDisplayFooter = (value)=>{
-    if(window.innerWidth <720) setDisplayFooter(value)
-  }
+  const onDisplayFooter = (value) => {
+    if (window.innerWidth < 720) setDisplayFooter(value);
+  };
 
   const value = {
+    changeDetails,
+    addCreditCard,
     onDisplayFooter,
     displayFooter,
     setUser,

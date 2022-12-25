@@ -3,6 +3,7 @@
   height: 30px;
 }
 .container_user {
+  margin-top: 10px;
   position: sticky;
   top: 10px;
   width: 30px;

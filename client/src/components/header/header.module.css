@@ -23,6 +23,11 @@ li:hover {
   border-radius: 10px;
 }
 
+.close_icon{
+  font-size: 20px;
+  padding-right: 7px;
+  color: rgb(0, 115, 255);
+}
 @media screen and (max-width: 768px) {
   .page_container {
     justify-content: space-between;
