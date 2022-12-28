@@ -26,7 +26,9 @@ const translation_en = {
   'max loan' : 'max loan is',
   usernameToTransfer : 'username to transfer',
   'loan-page' : 'you are going to make loan are you sure',
-  'transfer-page' : 'you are going to make transfer are you sure'
+  'transfer-page' : 'you are going to make transfer are you sure',
+  'order-page' : 'you are going to order are you sure'
+
   
 };
 export default translation_en;

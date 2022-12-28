@@ -6,13 +6,21 @@
   height: 100%;
 }
 
-.error_container{
+.error_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 350px;
-  text-align: center;
   background-color: black;
   border-radius: 5px;
 }
 .error_tag {
   color: red;
   font-size: 20px;
+}
+@media screen and (max-width: 768px) {
+  .error_container {
+    height: 45px;
+    width: max-content;
+  }
 }

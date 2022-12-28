@@ -16,7 +16,7 @@ const Input = ({ onClick, inpNumber, inpData, error, rules, text, toggle, toggle
   return (
     <div className={styles.container}>
     
-      <ModelStyle toggle ={toggle} action={text} func={handleSubmit(onClick)} toggleFunc={toggleFunc} />
+      <ModelStyle  toggle ={toggle} action={text} func={handleSubmit(onClick)} toggleFunc={toggleFunc} />
       {inp.map((inp, index) => {
         return (
           <InputValidation

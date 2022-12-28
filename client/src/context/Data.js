@@ -66,7 +66,7 @@ const DataProvider = ({ children }) => {
       cvv: 712,
     };
 
-    const response = await axios.post(`${baseUrl}/user/credit-card`, creditCard);
+    const response = await axios.post(`${localhostUrl}/user/credit-card`, creditCard);
     setUser(response.data[0]);
   };
 

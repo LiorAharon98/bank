@@ -1,16 +1,18 @@
 import React from "react";
 import { useDataProvider } from "../../context/Data";
-
+import styles from "./active_credit_card.module.css";
 const ActiveCreditCard = ({ creditCard }) => {
-    const {changeLanguage} = useDataProvider()
+  const { changeLanguage } = useDataProvider();
   return (
     <>
-      <h2>
-        {changeLanguage('card number')} :{" "}
+      <p className={styles.credit_card_details}>
+        {changeLanguage("card number")} :{" "}
         {`${creditCard.cardNumber[0]}-${creditCard.cardNumber[1]}-${creditCard.cardNumber[2]}-${creditCard.cardNumber[3]}`}
-      </h2>
-      <h2>{changeLanguage('expiration date')} : {`${creditCard.expireData.month}/${creditCard.expireData.year}`}</h2>
-      <h2>cvv : {creditCard.cvv}</h2>
+      </p>
+      <p className={styles.credit_card_details}>
+        {changeLanguage("expiration date")} : {`${creditCard.expireData.month}/${creditCard.expireData.year}`}
+      </p>
+      <p className={styles.credit_card_details}>cvv : {creditCard.cvv}</p>
     </>
   );
 };

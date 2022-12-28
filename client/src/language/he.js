@@ -38,6 +38,7 @@ const translation_he = {
   'request has been declined' : "ההצעה נדחתה",
   'loan-page' : 'אתה עומד לבצע הלוואה האם אתה בטוח',
   'transfer-page' : 'אתה עומד לבצע העברה האם אתה בטוח',
+  'order-page' : 'אתה עומד לבצע הזמנה האם אתה בטוח?',
   register: 'הירשם',
   'dont have an account' : 'אין חשבון',
   students : 'סטודנטים',

@@ -29,7 +29,7 @@ const ModalStyle = ({ action, func, toggleFunc, toggle }) => {
             {<IoMdClose />}
           </div>
           <div className={styles.action}>
-            <p>{changeLanguage(action === "loan" ? "loan-page" : "transfer-page")}?</p>
+            <p>{changeLanguage(`${action}-page`)}?</p>
             <Button
               onClick={(e) => {
                 clickHandler(e, true);
