@@ -32,10 +32,13 @@ const UserPage = ({ children, text }) => {
   return (
     <>
       <HamburgerMenu onClick={toggle} className={true} />
+      <div className={styles.profile_container}>
+        {user.profilePicture && <img className={styles.profile_image} src={user.profilePicture} />}
+        <h1 id={styles.welcome_message}>
+          {changeLanguage("hello")} {user.username}
+        </h1>
+      </div>
 
-      <h1 id={styles.welcome_message}>
-        {changeLanguage("hello")} {user.username} {user.profileImg && <p>you have</p>}
-      </h1>
       <div className={styles.container}>
         <UserMenu toggleOptionFunc={toggleOptionFunc} toggle={toggleMenu} />
         <div className={styles.middle_container} style={{ height: text ? "max-content" : "550px" }}>

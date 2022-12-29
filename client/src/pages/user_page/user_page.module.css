@@ -10,8 +10,8 @@
   padding-left: 20px;
   justify-content: space-around;
   color: white;
- 
-  background: linear-gradient(to bottom,rgba(0, 123, 255, 0.422),rgb(102, 168, 255));
+
+  background: linear-gradient(to bottom, rgba(0, 123, 255, 0.422), rgb(102, 168, 255));
   width: 30%;
   height: 550px;
   border-radius: 10px;
@@ -19,7 +19,7 @@
 
 .right_bar {
   display: flex;
-  background: linear-gradient(to bottom,rgb(3, 124, 253),rgb(102, 168, 255));
+  background: linear-gradient(to bottom, rgb(3, 124, 253), rgb(102, 168, 255));
   min-height: 90vh;
   width: 50px;
   border-radius: 5px;
@@ -27,7 +27,15 @@
 
 #welcome_message {
   color: white;
+  margin-top: 5px;
 }
+.profile_image {
+  margin-top: 10px;
+  width: 65px;
+  height: 65px;
+  border-radius: 10px;
+}
+
 
 @media screen and (max-width: 768px) {
   .container {
@@ -43,5 +51,14 @@
   }
   .middle_current_container {
     width: 100%;
+  }
+  .profile_image {
+    margin: 30px 0px 30px 3px;
+  }
+  .profile_container {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }

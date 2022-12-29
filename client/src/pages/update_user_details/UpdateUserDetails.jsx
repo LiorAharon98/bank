@@ -4,7 +4,6 @@ import UserPage from "../../pages/user_page/UserPage";
 import styles from "./update_user_details.module.css";
 import Button from "../../components/button/Button";
 import UserDetails from "../../components/user_details/UserDetails";
-import { useEffect } from "react";
 const UpdateUserDetails = () => {
   const { changeLanguage, user, addPicture } = useDataProvider();
   const [img, setImg] = useState("");
@@ -15,6 +14,7 @@ const UpdateUserDetails = () => {
   const clickHandler = (e) => {
     e.preventDefault();
     addPicture(img);
+    setImg('')
   };
   const { username, password, email } = user;
   const h3 = [
@@ -26,9 +26,9 @@ const UpdateUserDetails = () => {
     <UserPage>
       <input onChange={addImg} className={styles.input_file} type="file" id="img_upload" />
       <label className={styles.upload_img_label} htmlFor="img_upload">
-        {img && <Button text={"add"} to={"/"} onClick={clickHandler} />}
         {changeLanguage("upload profile picture")}
       </label>
+      {img && <Button text={"add"} to={"/"} onClick={clickHandler} />}
       {h3.map((h3, index) => (
         <UserDetails key={index} label={h3.label} text={h3.text} />
       ))}

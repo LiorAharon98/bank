@@ -68,12 +68,12 @@ const DataProvider = ({ children }) => {
       cvv: 0,
     };
 
-    const response = await axios.post(`${localhostUrl}/user/credit-card`, creditCard);
+    const response = await axios.post(`${baseUrl}/user/credit-card`, creditCard);
     setUser(response.data[0]);
   };
 
   const changeDetails = async (data) => {
-    const response = await axios.post(`${localhostUrl}/user/update-user-details`, data);
+    const response = await axios.post(`${baseUrl}/user/update-user-details`, data);
     setUser(response.data[0]);
   };
   const logoutUser = () => {
@@ -100,8 +100,9 @@ const DataProvider = ({ children }) => {
     await uploadBytes(storageRef, picture);
 
     const pictureUrl = await getDownloadURL(storageRef);
-    const userInfo = {profilePicture : pictureUrl,id : user._id}
-    await axios.put(`${localhostUrl}/user/update-user-details`, userInfo);
+    const userInfo = { profilePicture: pictureUrl, id: user._id };
+    const response = await axios.put(`${baseUrl}/user/update-user-details`, userInfo);
+    setUser(response.data[0]);
   };
   const onToggleSidebar = () => {
     setToggleSidebar((prev) => !prev);

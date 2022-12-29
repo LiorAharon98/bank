@@ -9,12 +9,11 @@ const AdminPage = () => {
   const { changeLanguage, baseUrl } = useDataProvider();
   const [spinner, setSpinner] = useState(false);
   const [users, setUsers] = useState([]);
-  const fetchUsers = () => {
+  const fetchUsers = async () => {
     setSpinner(true);
-    axios.get(`${baseUrl}/admin`).then((response) => {
-      setUsers(response.data);
-      setSpinner(false);
-    });
+    const response = await axios.get(`${baseUrl}/admin`);
+    setUsers(response.data);
+    setSpinner(false);
   };
   useEffect(() => {
     fetchUsers();
