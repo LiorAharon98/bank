@@ -6,7 +6,7 @@ import styles from "./input.module.css";
 import ModelStyle from "../modal_style/ModalStyle";
 import { useDataProvider } from "../../context/Data";
 const Input = ({ onClick, inpNumber, inpData, error, rules, text, toggle, toggleFunc }) => {
-  const {changeLanguage} = useDataProvider()
+  const { changeLanguage } = useDataProvider();
   const inp = new Array(inpNumber).fill(1);
   const {
     handleSubmit,
@@ -15,8 +15,7 @@ const Input = ({ onClick, inpNumber, inpData, error, rules, text, toggle, toggle
   } = useForm();
   return (
     <div className={styles.container}>
-    
-      <ModelStyle  toggle ={toggle} action={text} func={handleSubmit(onClick)} toggleFunc={toggleFunc} />
+      <ModelStyle toggle={toggle} action={text} func={handleSubmit(onClick)} toggleFunc={toggleFunc} />
       {inp.map((inp, index) => {
         return (
           <InputValidation
@@ -29,14 +28,11 @@ const Input = ({ onClick, inpNumber, inpData, error, rules, text, toggle, toggle
         );
       })}
 
-      <Button text={text} onClick={toggleFunc.bind(this, true)} />
-      {error && 
-      <div className={styles.error_container}>
-
-      <p className={styles.error_tag}>{changeLanguage(error)} !</p>
-      </div>
-      }
-  
+      {error && (
+        <div className={styles.error_container}>
+          <p className={styles.error_tag}>{changeLanguage(error)} !</p>
+        </div>
+      )}
     </div>
   );
 };

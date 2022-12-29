@@ -1,6 +1,8 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../firebase";
 export const DataContext = createContext();
 export const useDataProvider = () => {
   return useContext(DataContext);
@@ -61,9 +63,9 @@ const DataProvider = ({ children }) => {
   const addCreditCard = async (username) => {
     const creditCard = {
       cardHolder: username,
-      cardNumber: [4580, 3900, 3213, 4341],
-      expireData: { month: 10, year: 26 },
-      cvv: 712,
+      cardNumber: [0, 0, 0, 0],
+      expireData: { month: 0, year: 0 },
+      cvv: 0,
     };
 
     const response = await axios.post(`${localhostUrl}/user/credit-card`, creditCard);
@@ -71,7 +73,8 @@ const DataProvider = ({ children }) => {
   };
 
   const changeDetails = async (data) => {
-    const response = await axios.post(`${baseUrl}/user/update-user-details`, data);
+    const response = await axios.post(`${localhostUrl}/user/update-user-details`, data);
+    setUser(response.data[0]);
   };
   const logoutUser = () => {
     sessionStorage.removeItem("key");
@@ -91,7 +94,15 @@ const DataProvider = ({ children }) => {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
+  const addPicture = async (picture) => {
+    const storageRef = ref(storage, `/profile-images/${picture.name}`);
 
+    await uploadBytes(storageRef, picture);
+
+    const pictureUrl = await getDownloadURL(storageRef);
+    const userInfo = {profilePicture : pictureUrl,id : user._id}
+    await axios.put(`${localhostUrl}/user/update-user-details`, userInfo);
+  };
   const onToggleSidebar = () => {
     setToggleSidebar((prev) => !prev);
   };
@@ -101,6 +112,7 @@ const DataProvider = ({ children }) => {
   };
 
   const value = {
+    addPicture,
     changeDetails,
     addCreditCard,
     onDisplayFooter,

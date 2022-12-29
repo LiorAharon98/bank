@@ -2,6 +2,7 @@ import Input from "../../components/input/Input";
 import UserPage from "../../pages/user_page/UserPage";
 import { useDataProvider } from "../../context/Data";
 import { useNavigate } from "react-router-dom";
+import Button from "../../components/button/Button";
 import { useState } from "react";
 const TransferMoney = () => {
   const { transferMoney, user, scrollToTop } = useDataProvider();
@@ -39,6 +40,7 @@ const TransferMoney = () => {
         inpNumber={2}
         error={error}
       />
+       <Button text={'transfer'} onClick={toggleFunc.bind(this, true)} />
     </UserPage>
   );
 };

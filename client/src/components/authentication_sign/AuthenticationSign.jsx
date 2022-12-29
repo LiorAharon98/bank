@@ -4,7 +4,8 @@ import styles from "./authentication_sign.module.css";
 import InputValidation from "../input_validation/InputValidation";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import {AiFillEyeInvisible} from "react-icons/ai"
+import {AiOutlineEyeInvisible} from "react-icons/ai"
+import {MdOutlineVisibility} from "react-icons/md"
 const Authentication = ({ text, onClick, page, userError }) => {
   const [passwordShow, setIsPasswordShow] = useState("password");
   const {
@@ -42,11 +43,13 @@ const Authentication = ({ text, onClick, page, userError }) => {
           name={"password"}
           rules={{ required: "fill please", minLength: { value: 3, message: "should be at least 3 char" } }}
         />
-        <AiFillEyeInvisible className={styles.password_icon} onClick={showPassword}/>
+        {passwordShow ==='password' ? 
+        <AiOutlineEyeInvisible className={styles.password_icon} onClick={showPassword}/>
+        : <MdOutlineVisibility className={styles.password_icon} onClick={showPassword} />
+      }
       </div>
       {page === "sign up" && (
         <>
-          <div>
             <InputValidation
               type={passwordShow}
               control={control}
@@ -57,7 +60,6 @@ const Authentication = ({ text, onClick, page, userError }) => {
                 validate: (value) => value === checkEqualPassword || "password not match!",
               }}
             />
-          </div>
           <InputValidation
             type={"email"}
             control={control}

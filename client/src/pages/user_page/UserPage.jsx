@@ -6,15 +6,15 @@ import UserMenu from "../../components/user_menu/UserMenu";
 import { useDataProvider } from "../../context/Data";
 import { useEffect } from "react";
 const UserPage = ({ children, text }) => {
-  const { changeLanguage, user, logoutUser,scrollToTop,setUser } = useDataProvider();
+  const { changeLanguage, user, logoutUser, scrollToTop, setUser } = useDataProvider();
   const navigate = useNavigate();
   const [toggleMenu, setToggleMenu] = useState(false);
-  useEffect(()=>{
-    const data = sessionStorage.getItem('key')
-setUser(JSON.parse(data))
-  },[])
+  useEffect(() => {
+    const data = sessionStorage.getItem("key");
+    setUser(JSON.parse(data));
+  }, []);
   const toggle = () => {
-    scrollToTop()
+    scrollToTop();
     setToggleMenu((prev) => {
       return !prev;
     });
@@ -28,13 +28,13 @@ setUser(JSON.parse(data))
 
     navigate(`/user${li.to}`);
   };
- 
+
   return (
     <>
       <HamburgerMenu onClick={toggle} className={true} />
 
       <h1 id={styles.welcome_message}>
-        {changeLanguage("hello")} {user.username}{" "}
+        {changeLanguage("hello")} {user.username} {user.profileImg && <p>you have</p>}
       </h1>
       <div className={styles.container}>
         <UserMenu toggleOptionFunc={toggleOptionFunc} toggle={toggleMenu} />

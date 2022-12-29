@@ -60,7 +60,9 @@ const translation_he = {
   'upload profile picture' : 'העלאת תמונה פרופיל',
   'users not found' : ' משתמש לא נמצא',
   'please fill data' : 'נא למלא פרטים',
-  'we not allowed to be at overdraft' : 'אנחנו לא מאשרים להיות בחריגה'
+  'we not allowed to be at overdraft' : 'אנחנו לא מאשרים להיות בחריגה',
+  'this route is not exist please go back to homepage' : 'הנתיב לא נמצא נא לחזור לדף הבית',
+  homepage : 'דף הבית'
 
 
   
