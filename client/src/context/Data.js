@@ -28,21 +28,22 @@ const DataProvider = ({ children }) => {
       setUser(data);
     }
   }, []);
-  const addUser = (data) => {
+  const addUser = async (data) => {
     const maxLoan = Math.floor((data.income * 70) / 100);
 
     const user = { ...data, balance: 5000, expense: [], maxLoan };
-    axios.post(`${baseUrl}/sign-up`, user);
+    await axios.post(`${baseUrl}/sign-up`, user);
   };
 
   const specificUser = async (username, password) => {
     const user = { username, password };
+
     const response = await axios.post(`${baseUrl}/sign-in`, user);
-    if (response.data[0]) {
-      setUser(response.data[0]);
-      sessionStorage.setItem("key", JSON.stringify(response.data[0]));
+    if (response.data) {
+      setUser(response.data);
+      sessionStorage.setItem("key", JSON.stringify(response.data));
     }
-    return response.data[0];
+    return response.data;
   };
   const transferMoney = async (username, price, usernameToTransfer, expense) => {
     const details = {
@@ -52,19 +53,19 @@ const DataProvider = ({ children }) => {
     };
     const response = await axios.post(`${baseUrl}/user/transfer-money`, details);
     if (!response.data) return false;
-    setUser(response.data[0]);
-    return response.data[0];
+    setUser(response.data);
+    return response.data;
   };
   const loanMoney = async (username, price, expense) => {
     const user = { username, money: { price, moneyType: "loan", date: getDate(), id: expense.length } };
     const response = await axios.post(`${baseUrl}/user/loan`, user);
-    setUser(response.data[0]);
+    setUser(response.data);
   };
   const addCreditCard = async (username) => {
     const creditCard = {
       cardHolder: username,
       cardNumber: [0, 0, 0, 0],
-      expireData: { month: 0, year: 0 },
+      expireData: { month: 8, year: 26 },
       cvv: 0,
     };
 
@@ -74,7 +75,17 @@ const DataProvider = ({ children }) => {
 
   const changeDetails = async (data) => {
     const response = await axios.post(`${baseUrl}/user/update-user-details`, data);
-    setUser(response.data[0]);
+    setUser(response.data);
+  };
+  const addPicture = async (picture) => {
+    const storageRef = ref(storage, `/profile-images/${picture.name}`);
+
+    await uploadBytes(storageRef, picture);
+
+    const pictureUrl = await getDownloadURL(storageRef);
+    const userInfo = { profilePicture: pictureUrl, id: user._id };
+    const response = await axios.put(`${baseUrl}/user/update-user-details`, userInfo);
+    setUser(response.data);
   };
   const logoutUser = () => {
     sessionStorage.removeItem("key");
@@ -93,16 +104,6 @@ const DataProvider = ({ children }) => {
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
-  };
-  const addPicture = async (picture) => {
-    const storageRef = ref(storage, `/profile-images/${picture.name}`);
-
-    await uploadBytes(storageRef, picture);
-
-    const pictureUrl = await getDownloadURL(storageRef);
-    const userInfo = { profilePicture: pictureUrl, id: user._id };
-    const response = await axios.put(`${baseUrl}/user/update-user-details`, userInfo);
-    setUser(response.data[0]);
   };
   const onToggleSidebar = () => {
     setToggleSidebar((prev) => !prev);

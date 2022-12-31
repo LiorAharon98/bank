@@ -26,7 +26,6 @@ const AdminPage = () => {
           <tbody className={styles.tbody_container}>
             <tr className={styles.tr_container}>
               <td className={styles.user_info}> {changeLanguage("username")}</td>
-              <td className={styles.user_info}>{changeLanguage("password")}</td>
               <td className={styles.user_info}>{changeLanguage("balance")}</td>
               <td className={styles.user_info}>{changeLanguage("income")}</td>
               <td className={styles.user_info}>{changeLanguage("maxLoan")}</td>

@@ -14,12 +14,12 @@ const UpdateUserDetails = () => {
   const clickHandler = (e) => {
     e.preventDefault();
     addPicture(img);
-    setImg('')
+    setImg("");
   };
   const { username, password, email } = user;
   const h3 = [
     { text: "username", label: username },
-    { text: "password", label: password },
+    { text: "password", label: "password encrypted" },
     { text: "email", label: email },
   ];
   return (

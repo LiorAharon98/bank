@@ -11,6 +11,7 @@ const SignUpPage = () => {
   const navigate = useNavigate();
   const handleClick = async (data) => {
     const { username, password } = data;
+   
     const response = await specificUser(username, password);
     if (response) return setUserError("user already exist");
     addUser(data);

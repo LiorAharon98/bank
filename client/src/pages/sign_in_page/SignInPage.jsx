@@ -11,7 +11,7 @@ const SignInPage = () => {
   const [spinner, setSpinner] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
-  const { specificUser, scrollToTop, changeLanguage,onDisplayFooter, } = useDataProvider();
+  const { specificUser, scrollToTop, changeLanguage, onDisplayFooter } = useDataProvider();
   const handleClick = async (data) => {
     setSpinner(true);
     const { username, password } = data;
@@ -24,20 +24,18 @@ const SignInPage = () => {
     scrollToTop();
   };
 
-  useEffect(()=>{
-    onDisplayFooter(false)
-
-  },[])
+  useEffect(() => {
+    onDisplayFooter(false);
+  }, []);
 
   return (
     <>
       {spinner && <LoadingScreen text={"searching user"} />}
       <SignCard page={"sign in"}>
-        <h2 className={styles.sign_text}>{changeLanguage('sign in')}</h2>
+        <h2 className={styles.sign_text}>{changeLanguage("sign in")}</h2>
         <Authentication userError={error} onClick={handleClick} text={"sign in"} />
         <div className={styles.container}>
-
-          <Link style={{ color: "rgb(1, 165, 247)" , textAlign : 'center' }} to={"/sign-up"}>
+          <Link style={{ color: "rgb(1, 165, 247)", textAlign: "center" }} to={"/sign-up"}>
             {changeLanguage("dont have an account")}?
           </Link>
         </div>

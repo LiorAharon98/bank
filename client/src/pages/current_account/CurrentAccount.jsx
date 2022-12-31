@@ -6,7 +6,6 @@ import { useEffect } from "react";
 
 const CurrentAccount = () => {
   const { changeLanguage, user, setUser } = useDataProvider();
-
   if (Object.keys(user).length === 0) return;
   const { balance, expense, income } = user;
   expense.sort((a, b) => {
