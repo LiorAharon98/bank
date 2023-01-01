@@ -3,13 +3,10 @@ const app = express();
 const mongoose = require("mongoose");
 const UserRoute = require("./routes/User.route");
 const setServerConfiguration = require("./config");
-
+require("dotenv").config();
 setServerConfiguration(app);
-mongoose.connect(
-  process.env.MONGODB_URI ||
-    "mongodb+srv://liors-database:lior.ah98@cluster0.iybrzvm.mongodb.net/bank?retryWrites=true&w=majority"
-);
+mongoose.connect(process.env.MONGODB_URI);
 
 app.use("/bank", UserRoute);
 
-app.listen(process.env.PORT || 8000);
+app.listen(process.env.PORT);
