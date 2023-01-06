@@ -3,6 +3,7 @@ import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase";
+import { useCookies } from "react-cookie";
 export const DataContext = createContext();
 export const useDataProvider = () => {
   return useContext(DataContext);
@@ -13,7 +14,8 @@ const DataProvider = ({ children }) => {
   const localhostUrl = "http://localhost:8000/bank";
   const [user, setUser] = useState({});
   const [toggleSidebar, setToggleSidebar] = useState(false);
-  const [displayFooter, setDisplayFooter] = useState(true);
+  const [hamburgerToggle, setHamburgerToggle] = useState(false);
+  const [cookies, setCookies] = useCookies("");
 
   const { t } = useTranslation();
 
@@ -28,6 +30,8 @@ const DataProvider = ({ children }) => {
       setUser(data);
     }
   }, []);
+
+
   const addUser = async (data) => {
     const maxLoan = Math.floor((data.income * 70) / 100);
 
@@ -39,29 +43,32 @@ const DataProvider = ({ children }) => {
     const user = { username, password };
 
     const response = await axios.post(`${baseUrl}/sign-in`, user);
+
     if (response.data) {
-      setUser(response.data);
-      sessionStorage.setItem("key", JSON.stringify(response.data));
+      setUser(response.data[0]);
+
+      setCookies("jwt", response.data[1]);
+      sessionStorage.setItem("key", JSON.stringify(response.data[0]));
     }
-    return response.data;
+    return response.data ? [0] : "";
   };
-  const transferMoney = async (username, price, usernameToTransfer, expense) => {
+  const transferMoney = async (_id, price, usernameToTransfer, expense) => {
     const details = {
-      username,
       money: { price, moneyType: "transfer", date: getDate(), id: expense.length },
       usernameToTransfer,
+      token: cookies.jwt,
     };
     const response = await axios.post(`${baseUrl}/user/transfer-money`, details);
     if (!response.data) return false;
     setUser(response.data);
     return response.data;
   };
-  const loanMoney = async (username, price, expense) => {
-    const user = { username, money: { price, moneyType: "loan", date: getDate(), id: expense.length } };
+  const loanMoney = async (id, price, expense) => {
+    const user = { id, money: { price, moneyType: "loan", date: getDate(), id: expense.length }, token: cookies.jwt };
     const response = await axios.post(`${baseUrl}/user/loan`, user);
     setUser(response.data);
   };
-  const addCreditCard = async (username) => {
+  const addCreditCard = async (username, id) => {
     const creditCard = {
       cardHolder: username,
       cardNumber: [0, 0, 0, 0],
@@ -74,7 +81,8 @@ const DataProvider = ({ children }) => {
   };
 
   const changeDetails = async (data) => {
-    const response = await axios.post(`${baseUrl}/user/update-user-details`, data);
+    const details = { ...data, token: cookies.jwt };
+    const response = await axios.post(`${baseUrl}/user/update-user-details`, details);
     setUser(response.data);
   };
   const addPicture = async (picture) => {
@@ -83,11 +91,12 @@ const DataProvider = ({ children }) => {
     await uploadBytes(storageRef, picture);
 
     const pictureUrl = await getDownloadURL(storageRef);
-    const userInfo = { profilePicture: pictureUrl, id: user._id };
+    const userInfo = { profilePicture: pictureUrl, token: cookies.jwt };
     const response = await axios.put(`${baseUrl}/user/update-user-details`, userInfo);
     setUser(response.data);
   };
   const logoutUser = () => {
+    setCookies("jwt", "");
     sessionStorage.removeItem("key");
     setUser({});
   };
@@ -107,18 +116,16 @@ const DataProvider = ({ children }) => {
   };
   const onToggleSidebar = () => {
     setToggleSidebar((prev) => !prev);
-  };
-
-  const onDisplayFooter = (value) => {
-    if (window.innerWidth < 720) setDisplayFooter(value);
+    setHamburgerToggle((prev) => !prev);
   };
 
   const value = {
+    hamburgerToggle,
+    setHamburgerToggle,
     addPicture,
     changeDetails,
     addCreditCard,
-    onDisplayFooter,
-    displayFooter,
+
     setUser,
     onToggleSidebar,
     toggleSidebar,

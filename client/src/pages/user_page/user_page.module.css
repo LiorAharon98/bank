@@ -53,6 +53,9 @@
     width: 100%;
   }
   .profile_image {
+    border-radius: 20px;
+    height: 60px;
+    width: 60px;
     margin: 30px 0px 30px 3px;
   }
   .profile_container {

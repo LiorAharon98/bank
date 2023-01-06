@@ -9,7 +9,8 @@ const Loan = () => {
   const navigate = useNavigate();
   const { loanMoney, changeLanguage, user, scrollToTop } = useDataProvider();
 
-  const { username, expense, maxLoan } = user;
+  const {  expense, maxLoan,_id } = user;
+
   const [error, setError] = useState("");
   const [toggle, setToggle] = useState(false);
   const inpData = [{ name: "price", type: "number" }];
@@ -18,7 +19,7 @@ const Loan = () => {
   };
   const handleClick = (data) => {
     if (data.price > maxLoan) return [setError("request has been declined"), toggleFunc(false)];
-    loanMoney(username, Number(data.price), expense);
+    loanMoney(_id, Number(data.price), expense);
     navigate("/user/current-account");
     scrollToTop();
   };

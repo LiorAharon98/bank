@@ -62,7 +62,8 @@ const translation_he = {
   'please fill data' : 'נא למלא פרטים',
   'we not allowed to be at overdraft' : 'אנחנו לא מאשרים להיות בחריגה',
   'this route is not exist please go back to homepage' : 'הנתיב לא נמצא נא לחזור לדף הבית',
-  homepage : 'דף הבית'
+  homepage : 'דף הבית',
+  'user not found' : 'משתמש לא נמצא'
 
 
   

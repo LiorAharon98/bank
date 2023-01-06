@@ -6,8 +6,10 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import {AiOutlineEyeInvisible} from "react-icons/ai"
 import {MdOutlineVisibility} from "react-icons/md"
-const Authentication = ({ text, onClick, page, userError }) => {
+import { useDataProvider } from "../../context/Data";
+const AuthenticationSign = ({ text, onClick, page, userError }) => {
   const [passwordShow, setIsPasswordShow] = useState("password");
+  const {changeLanguage} = useDataProvider()
   const {
     handleSubmit,
     control,
@@ -44,8 +46,9 @@ const Authentication = ({ text, onClick, page, userError }) => {
           rules={{ required: "fill please", minLength: { value: 3, message: "should be at least 3 char" } }}
         />
         {passwordShow ==='password' ? 
+        <MdOutlineVisibility className={styles.password_icon} onClick={showPassword} />
+        : 
         <AiOutlineEyeInvisible className={styles.password_icon} onClick={showPassword}/>
-        : <MdOutlineVisibility className={styles.password_icon} onClick={showPassword} />
       }
       </div>
       {page === "sign up" && (
@@ -74,10 +77,11 @@ const Authentication = ({ text, onClick, page, userError }) => {
           />
         </>
       )}
-      {userError && <p id={styles.user_error}>{userError}</p>}
+     
+      {userError && <p id={styles.user_error}>{changeLanguage(userError)}</p>}
       <Button onClick={handleSubmit(onClick)} text={text} to={"/user"} />
     </>
   );
 };
 
-export default Authentication;
+export default AuthenticationSign;

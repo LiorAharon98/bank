@@ -12,12 +12,12 @@ const TransferMoney = () => {
   const toggleFunc = (value) => {
     setToggle(value);
   };
-  const { username, balance, expense } = user;
+  const { username, balance, expense,_id } = user;
   const handleClick = async (data) => {
     const { price, usernameToTransfer } = data;
     if (price === "" || price < 0) return setError("please fill data");
     if (price > balance) return setError("we not allowed to be at overdraft");
-    const user = await transferMoney(username, Number(price), usernameToTransfer, expense);
+    const user = await transferMoney(_id, Number(price), usernameToTransfer, expense);
     if (!user) {
       return [setError("users not found"), toggleFunc(false)];
     }

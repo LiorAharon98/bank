@@ -13,7 +13,7 @@ const UserDetails = ({ text, label }) => {
     e.preventDefault();
     if (!toggleInp) return setToggleInp(true);
 
-    const info = { info: text, value: inpRef.current.value, id: user._id };
+    const info = { info: text, value: inpRef.current.value};
     changeDetails(info);
     setToggleInp(false);
   };

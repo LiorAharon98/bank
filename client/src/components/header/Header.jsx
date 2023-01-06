@@ -7,15 +7,13 @@ import HamburgerMenu from "../hamburger_menu/HamburgerMenu";
 import {AiOutlineClose} from "react-icons/ai"
 import { useState } from "react";
 const Header = () => {
-  const { changeLanguage, onToggleSidebar } = useDataProvider();
-const [hamburgerToggle,setHamburgerToggle] = useState(false)
+  const { changeLanguage, onToggleSidebar,setHamburgerToggle,hamburgerToggle } = useDataProvider();
+
   const clickHandler = ()=>{
     onToggleSidebar()
-    setHamburgerToggle(true)
 
   }
   const closeMenu =()=>{
-    setHamburgerToggle(false)
     onToggleSidebar()
   }
   return (
