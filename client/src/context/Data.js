@@ -36,7 +36,7 @@ const DataProvider = ({ children }) => {
     const maxLoan = Math.floor((data.income * 70) / 100);
 
     const user = { ...data, balance: 5000, expense: [], maxLoan };
-    await axios.post(`${baseUrl}/sign-up`, user);
+    await axios.post(`${localhostUrl}/sign-up`, user);
   };
 
   const specificUser = async (username, password) => {
@@ -65,7 +65,7 @@ const DataProvider = ({ children }) => {
   };
   const loanMoney = async (id, price, expense) => {
     const user = { id, money: { price, moneyType: "loan", date: getDate(), id: expense.length }, token: cookies.jwt };
-    const response = await axios.post(`${baseUrl}/user/loan`, user);
+    const response = await axios.post(`${localhostUrl}/user/loan`, user);
     setUser(response.data);
   };
   const addCreditCard = async (username, id) => {
