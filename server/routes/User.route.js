@@ -4,17 +4,12 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/UserModel");
 
-const allUsers = async () => {
-  const users = await UserModel.find({});
-  return users;
-};
-
 const verifyTokenJwt = (token) => {
   return jwt.verify(token, "liors-secret");
 };
 
 router.get("/admin", async (req, res) => {
-  const users = await allUsers();
+  const users = await UserModel.find();
   res.json(users);
 });
 router.post("/sign-up", async (req, res) => {
@@ -95,8 +90,9 @@ router.post("/user/credit-card", async (req, res) => {
 
   while (!found) {
     const test = await UserModel.findOne({ "creditCard.cvv": generateCvv });
+
     if (test) generateCvv = Math.floor(Math.random() * 999);
-    else return (found = false);
+    else found = true;
   }
 
   const cardNumber = [4580, 3900, Math.floor(Math.random() * 9999), Math.floor(Math.random() * 9999)];
