@@ -13,10 +13,17 @@ router.get("/admin", async (req, res) => {
   res.json(users);
 });
 router.post("/sign-up", async (req, res) => {
+  const { username, email } = req.body;
+
   try {
+    const isUserExist = await UserModel.findOne({ username });
+    const isEmailExist = await UserModel.findOne({ email });
+    if (isUserExist || isEmailExist) return res.json(true);
+
     await UserModel.create(req.body);
+    res.json(false);
   } catch (error) {
-    console.log(error);
+    res.json(error);
   }
 });
 router.post("/sign-in", async (req, res) => {
@@ -64,25 +71,38 @@ router.post("/user/loan", async (req, res) => {
   const { money, token, id } = req.body;
 
   const update = { balance: money.price, maxLoan: -money.price };
-  const user = await UserModel.findByIdAndUpdate(
-    verifyTokenJwt(token),
-    { $inc: update, $push: { expense: money, id } },
-    { new: true }
-  );
+  try {
+    const user = await UserModel.findByIdAndUpdate(
+      verifyTokenJwt(token),
+      { $inc: update, $push: { expense: money, id } },
+      { new: true }
+    );
 
-  res.json(user);
+    res.json(user);
+  } catch (error) {
+    console.log(error);
+  }
 });
 router.post("/user/update-user-details", async (req, res) => {
   const { info, value, token } = req.body;
-  const user = await UserModel.findByIdAndUpdate(verifyTokenJwt(token), { [info]: value }, { new: true });
+  try {
+    const user = await UserModel.findByIdAndUpdate(verifyTokenJwt(token), { [info]: value }, { new: true });
 
-  res.json(user);
+    res.json(user);
+  } catch (error) {
+    console.log(error);
+  }
 });
 router.put("/user/update-user-details", async (req, res) => {
   const { profilePicture, token } = req.body;
-  const user = await UserModel.findByIdAndUpdate(verifyTokenJwt(token), { profilePicture }, { new: true });
 
-  res.json(user);
+  try {
+    const user = await UserModel.findByIdAndUpdate(verifyTokenJwt(token), { profilePicture }, { new: true });
+
+    res.json(user);
+  } catch (error) {
+    console.log(error);
+  }
 });
 router.post("/user/credit-card", async (req, res) => {
   let generateCvv = Math.floor(Math.random() * 999);

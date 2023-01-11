@@ -33,13 +33,12 @@ const AdminPage = () => {
             </tr>
 
             {users.map((user, index) => {
-              const { password, username, balance, maxLoan, income } = user;
+              const { username, balance, maxLoan, income } = user;
               return (
                 <tr key={index} className={styles.tr_container}>
                   <td className={styles.user_info} key={index}>
                     {username}
                   </td>
-                  <td className={styles.user_info}>{password}</td>
                   <td className={styles.user_info}>{balance}</td>
                   <td className={styles.user_info}>{income}</td>
                   <td className={styles.user_info}>{maxLoan}</td>

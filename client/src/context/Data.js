@@ -31,26 +31,35 @@ const DataProvider = ({ children }) => {
     }
   }, []);
 
-
   const addUser = async (data) => {
     const maxLoan = Math.floor((data.income * 70) / 100);
 
     const user = { ...data, balance: 5000, expense: [], maxLoan };
-    await axios.post(`${baseUrl}/sign-up`, user);
+    try {
+      const response = await axios.post(`${baseUrl}/sign-up`, user);
+
+      return response.data ? true : false;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const specificUser = async (username, password) => {
     const user = { username, password };
 
-    const response = await axios.post(`${baseUrl}/sign-in`, user);
+    try {
+      const response = await axios.post(`${baseUrl}/sign-in`, user);
 
-    if (response.data) {
-      setUser(response.data[0]);
+      if (response.data) {
+        setUser(response.data[0]);
 
-      setCookies("jwt", response.data[1]);
-      sessionStorage.setItem("key", JSON.stringify(response.data[0]));
+        setCookies("jwt", response.data[1]);
+        sessionStorage.setItem("key", JSON.stringify(response.data[0]));
+      }
+      return response.data ? [0] : "";
+    } catch (error) {
+      console.log(error);
     }
-    return response.data ? [0] : "";
   };
   const transferMoney = async (_id, price, usernameToTransfer, expense) => {
     const details = {
@@ -58,15 +67,23 @@ const DataProvider = ({ children }) => {
       usernameToTransfer,
       token: cookies.jwt,
     };
-    const response = await axios.post(`${baseUrl}/user/transfer-money`, details);
-    if (!response.data) return false;
-    setUser(response.data);
-    return response.data;
+    try {
+      const response = await axios.post(`${baseUrl}/user/transfer-money`, details);
+      if (!response.data) return false;
+      setUser(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
   };
   const loanMoney = async (id, price, expense) => {
     const user = { id, money: { price, moneyType: "loan", date: getDate(), id: expense.length }, token: cookies.jwt };
-    const response = await axios.post(`${baseUrl}/user/loan`, user);
-    setUser(response.data);
+    try {
+      const response = await axios.post(`${baseUrl}/user/loan`, user);
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const addCreditCard = async (username) => {
     const creditCard = {
@@ -76,25 +93,36 @@ const DataProvider = ({ children }) => {
       cvv: 0,
     };
 
-    const response = await axios.post(`${localhostUrl}/user/credit-card`, creditCard);
+    try {
+      const response = await axios.post(`${baseUrl}/user/credit-card`, creditCard);
 
-    setUser(response.data);
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const changeDetails = async (data) => {
     const details = { ...data, token: cookies.jwt };
-    const response = await axios.post(`${baseUrl}/user/update-user-details`, details);
-    setUser(response.data);
+    try {
+      const response = await axios.post(`${baseUrl}/user/update-user-details`, details);
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const addPicture = async (picture) => {
     const storageRef = ref(storage, `/profile-images/${picture.name}`);
+    try {
+      await uploadBytes(storageRef, picture);
 
-    await uploadBytes(storageRef, picture);
-
-    const pictureUrl = await getDownloadURL(storageRef);
-    const userInfo = { profilePicture: pictureUrl, token: cookies.jwt };
-    const response = await axios.put(`${baseUrl}/user/update-user-details`, userInfo);
-    setUser(response.data);
+      const pictureUrl = await getDownloadURL(storageRef);
+      const userInfo = { profilePicture: pictureUrl, token: cookies.jwt };
+      const response = await axios.put(`${baseUrl}/user/update-user-details`, userInfo);
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const logoutUser = () => {
     setCookies("jwt", "");

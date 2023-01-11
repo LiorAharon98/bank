@@ -1,7 +1,7 @@
 .container {
   display: flex;
   justify-content: center;
-  height: 700px;
+  height: 850px;
   width: 100%;
   align-items: center;
 }
@@ -16,7 +16,7 @@
 }
 .tr_container {
   height: 65px;
-  /* width: 150px; */
+
   text-align: center;
 }
 
