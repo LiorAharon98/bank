@@ -39,10 +39,13 @@ const AdminPage = () => {
                   <td className={styles.user_info} key={index}>
                     {username}
                   </td>
-                  <td className={styles.user_info}>{balance}</td>
-                  <td className={styles.user_info}>{income}</td>
-                  <td className={styles.user_info}>{maxLoan}</td>
-                  <td className={balance > 0 ? styles.noun : styles.overdraft}></td>
+                  <td className={styles.user_info}>{balance}₪</td>
+                  <td className={styles.user_info}>{income}₪</td>
+                  <td className={styles.user_info}>{maxLoan}₪</td>
+                  <tr className={styles.status_container}>
+
+                  <td className={balance >0 ? styles.noun : styles.overdraft}></td>
+                  </tr>
                 </tr>
               );
             })}

@@ -22,11 +22,11 @@ const translation_en = {
   password: "password",
   about : 'about',
   username : 'username',
-  copyright : 'copyright by lior aharon 2022',
+  copyright : 'copyright by lior aharon 2023',
   'max loan' : 'max loan is',
   usernameToTransfer : 'username to transfer',
-  'loan-page' : 'you are going to make loan are you sure',
-  'transfer-page' : 'you are going to make transfer are you sure',
+  'loan-page' : 'your request has been approve please click approve',
+  'transfer-page' : 'your request has been approve please click approve',
   'order-page' : 'you are going to order are you sure'
 
   

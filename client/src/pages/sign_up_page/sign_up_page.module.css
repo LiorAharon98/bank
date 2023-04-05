@@ -1,5 +1,7 @@
 .sign_tag{
     margin: 0px;
-    color: white;
+    text-align: left;
+    font-size: 24px;
+    color:  rgb(1, 165, 247);;
     font-weight: 500;
 }

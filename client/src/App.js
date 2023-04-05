@@ -16,6 +16,7 @@ function App() {
   return (
     <HashRouter>
       <Header />
+
       <HomeScreenSidebar />
       <Routes>
         <Route path="/" element={<Homepage />}></Route>

@@ -1,7 +1,6 @@
 import React from "react";
 import InputValidation from "../input_validation/InputValidation";
 import { useForm } from "react-hook-form";
-import Button from "../button/Button";
 import styles from "./input.module.css";
 import ModelStyle from "../modal_style/ModalStyle";
 import { useDataProvider } from "../../context/Data";

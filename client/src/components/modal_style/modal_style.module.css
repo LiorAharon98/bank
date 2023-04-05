@@ -3,7 +3,7 @@
   position: fixed;
   height: 150%;
   width: 110%;
-  background-color: rgba(0, 0, 0, 0.703);
+  background-color: rgba(0, 0, 0, 0.844);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,26 +14,29 @@
   height: 0px;
 }
 .action {
+  height: 100%;
+  background-color: white;
   color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  border-radius: 15px;
 }
 .exit {
-  height: 40px;
-  padding-left: 10px;
-  padding-top: 10px;
-  margin-bottom: 15px;
-  border-radius: 5px;
+  height: 100px;
+  border-radius: 15px;
   font-size: 25px;
   color: black;
-  background-color: rgb(0, 153, 255);
+  background-color: white;
 }
 .container_action {
-  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
   width: 40%;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.902);
 }
 @media (max-width: 768px) {

@@ -1,29 +1,35 @@
 .container {
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 120px;
+  align-items: center;
+  width: 180px;
+
 }
 .button {
+  outline: none;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 25px;
-  width: 130px;
+  width: 140px;
   border-radius: 5px;
-  border: none;
-  background: linear-gradient(to left,rgb(7, 158, 251),rgba(255, 255, 255, 0.751) );
-  color: white;
-  font-size: 15px;
+  background-color: white;
+  color: rgb(0,130,255);
   padding: 10px;
 }
 .button:hover{
-  background-color: black;
   border: 1px solid white;
-  transition: 0.5s;
+  height: 22px;
+  width: 130px;
+  transition:0.5s;
 }
 @media (max-width:768px) {
   .button{
     height: 25px;
     padding: 8px;
-    width: 210px;
+    width: 130px;
   }
 }

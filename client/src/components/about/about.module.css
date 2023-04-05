@@ -3,9 +3,8 @@
   flex-direction: row;
   justify-content: space-around;
   color: white;
-  border-radius: 10px;
   width: 100%;
-  background: linear-gradient(to right, rgb(106, 183, 255), rgba(0, 42, 255, 0.963));
+  background: linear-gradient(to top, rgb(0, 123, 255), rgb(91, 159, 255));
 }
 .container_tag {
   font-weight: bolder;
@@ -15,7 +14,7 @@
 }
 @media (max-width: 768px) {
   .about {
-    margin-top: 20px;
+    margin-top: 1px;
     display: flex;
     flex-direction: column;
     width: 100%;

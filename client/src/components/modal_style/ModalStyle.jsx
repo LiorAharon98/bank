@@ -2,8 +2,6 @@ import React from "react";
 import styles from "./modal_style.module.css";
 import Button from "../button/Button";
 import { useDataProvider } from "../../context/Data";
-import { IoMdClose } from "react-icons/io";
-import {} from "react-icons/io";
 const ModalStyle = ({ action, func, toggleFunc, toggle }) => {
   const { changeLanguage } = useDataProvider();
   const clickHandler = (e, value) => {
@@ -12,31 +10,27 @@ const ModalStyle = ({ action, func, toggleFunc, toggle }) => {
     func();
   };
   return (
-    <div
-      onClick={(e) => {
-        clickHandler(e, false);
-      }}
-      className={toggle ? styles.container : styles.container_inactive}
-    >
+    <div className={toggle ? styles.container : styles.container_inactive}>
       {toggle && (
         <div className={styles.container_action}>
-          <div
-            onClick={(e) => {
-              clickHandler(e, false);
-            }}
-            className={styles.exit}
-          >
-            {<IoMdClose />}
-          </div>
           <div className={styles.action}>
-            <p>{changeLanguage(`${action}-page`)}?</p>
-            <Button
-              onClick={(e) => {
-                clickHandler(e, true);
-              }}
-              to={"/"}
-              text={changeLanguage(action)}
-            />
+            <p>{changeLanguage(`${action}-page`)}</p>
+            <div style={{ display: "flex" }}>
+              <Button
+                onClick={(e) => {
+                  clickHandler(e, false);
+                }}
+                to={"/"}
+                text={changeLanguage("Cancel")}
+              />
+              <Button
+                onClick={(e) => {
+                  clickHandler(e, true);
+                }}
+                to={"/"}
+                text={changeLanguage("approve")}
+              />
+            </div>
           </div>
         </div>
       )}

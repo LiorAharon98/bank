@@ -1,35 +1,25 @@
 .input {
+  padding-left: 5px;
   width: 230px;
-  height: 30px;
-  margin: 10px;
+  height: 40px;
   border: none;
   font-size: 18px;
   outline: none;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0);
-  border-bottom: 1px solid white;
+  border-bottom: 2px solid rgb(1, 165, 247);
+background-color: white;
+}
 
-}
-.input:hover{
-  border-bottom: 1px solid  rgb(1, 165, 247);
-}
-.input:focus{
-  border-bottom: 1px solid  rgb(1, 165, 247);
-}
 .inp_label_container {
+  margin-top: 5px;
   font-size: 18px;
   display: flex;
-  height: 80px;
+  height: 85px;
   flex-direction: column;
-  color: rgb(255, 255, 255);
+  color: rgb(1, 165, 247);
   font-family: Arial, Helvetica, sans-serif;
-
   justify-content: space-between;
 }
-.inp_label_container:hover {
-  color: rgb(1, 165, 247);
-  
-}
+
 #error {
   color: red;
   font-size: 18px;
@@ -39,6 +29,9 @@
 @media screen and (max-width: 768px) {
   .input {
     margin: 0px;
-    width: 220px;
+    width: 170px;
+  }
+  .inp_label_container{
+width: 180px;
   }
 }

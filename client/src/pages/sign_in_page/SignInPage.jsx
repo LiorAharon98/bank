@@ -24,19 +24,11 @@ const SignInPage = () => {
     scrollToTop();
   };
 
-
-
   return (
     <>
       {spinner && <LoadingScreen text={"searching user"} />}
       <SignCard page={"sign in"}>
-        <h2 className={styles.sign_text}>{changeLanguage("sign in")}</h2>
         <AuthenticationSign userError={error} onClick={handleClick} text={"sign in"} />
-        <div className={styles.container}>
-          <Link style={{ color: "rgb(1, 165, 247)", textAlign: "center" }} to={"/sign-up"}>
-            {changeLanguage("dont have an account")}?
-          </Link>
-        </div>
       </SignCard>
     </>
   );

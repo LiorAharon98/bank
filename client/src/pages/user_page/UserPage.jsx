@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./user_page.module.css";
-import HamburgerMenu from "../../components/hamburger_menu/HamburgerMenu";
 import UserMenu from "../../components/user_menu/UserMenu";
+import { MdOutlineAccountCircle } from "react-icons/md";
 import { useDataProvider } from "../../context/Data";
-import { useEffect } from "react";
+import { AiOutlineArrowRight } from "react-icons/ai";
 const UserPage = ({ children, text }) => {
-  const { changeLanguage, user, logoutUser, scrollToTop, setUser } = useDataProvider();
+  const { changeLanguage, user, logoutUser, scrollToTop } = useDataProvider();
   const navigate = useNavigate();
   const [toggleMenu, setToggleMenu] = useState(false);
-  useEffect(() => {
-    const data = sessionStorage.getItem("key");
-    setUser(JSON.parse(data));
-  }, []);
+
   const toggle = () => {
     scrollToTop();
     setToggleMenu((prev) => {
@@ -20,28 +17,24 @@ const UserPage = ({ children, text }) => {
     });
   };
   const toggleOptionFunc = (li) => {
-    if (li.label === "logout") {
+    if (li.label === "Logout") {
       navigate("/");
       logoutUser();
       return;
     }
-
+    setToggleMenu(false);
     navigate(`/user${li.to}`);
   };
-
   return (
     <>
-      <HamburgerMenu onClick={toggle} className={true} />
-      <div className={styles.profile_container}>
-        {user.profilePicture && <img className={styles.profile_image} src={user.profilePicture} />}
-        <h1 id={styles.welcome_message}>
-          {changeLanguage("hello")} {user.username}
-        </h1>
+      <div className={styles.profile_container}></div>
+      <UserMenu toggleOptionFunc={toggleOptionFunc} toggle={toggleMenu} />
+      <div style={{display : toggleMenu ? 'none' : undefined}} className={styles.test}>
+        {!toggleMenu && <AiOutlineArrowRight onMouseEnter={toggle} className={styles.icon} />}
       </div>
-
       <div className={styles.container}>
-        <UserMenu toggleOptionFunc={toggleOptionFunc} toggle={toggleMenu} />
-        <div className={styles.middle_container} style={{ height: text ? "max-content" : "550px" }}>
+        <div></div>
+        <div className={styles.middle_container} style={{ height: text ? "max-content" : undefined }}>
           {children}
         </div>
         <div className={styles.right_bar}></div>

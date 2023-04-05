@@ -1,19 +1,19 @@
 .container {
-  width: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 35px;
   height: 30px;
+
 }
 .container_user {
-  margin-top: 10px;
-  position: sticky;
-  top: 10px;
-  width: 30px;
-  height: 30px;
+
+  width: 35px;
+  height: 25px;
 }
 .hamburger {
-  background-color: rgb(255, 255, 255);
-  margin: 4px;
-  height: 5px;
-  border-radius: 10px;
+  background-color:black;
+  margin: 3px;
+  height: 4px;
 }
 @media (max-width: 768px) {
   .container_user {

@@ -1,13 +1,23 @@
 .user_menu_container {
+  position: fixed;
+  bottom: 2%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background: linear-gradient(to bottom,rgb(3, 124, 253),rgb(102, 168, 255));
-  border-radius: 5px;
-  height: 750px;
+  background: linear-gradient(to bottom, rgb(3, 124, 253), rgb(102, 168, 255));
+  border-radius: 10px;
+  height: 600px;
   width: 250px;
   transition: 500ms;
+}
+.option_container{
+  width: 91%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 80%;
+  padding-left: 20px;
 }
 .user_menu_inactive {
   width: 0px;
@@ -16,13 +26,38 @@
 
 .li {
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
+  width: 150px;
+  border-bottom: 1px solid white;
 }
-
+#welcome_message {
+  color: white;
+  margin: 5px;
+}
+.profile_image {
+  margin-top: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+}
+.container_user_info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
 @media screen and (max-width: 768px) {
   .user_menu_container {
-    margin-right: 5px;
-    height:600px;
+    position: fixed;
+    height: 86%;
+    width: 220px;
+    padding-left: 10px;
   }
+  .user_menu_inactive {
+    position: fixed;
+    width: 0px;
+    transition: 500ms;
+  }
+ 
 }

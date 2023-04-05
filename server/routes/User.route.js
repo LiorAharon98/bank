@@ -45,16 +45,16 @@ router.post("/user/transfer-money", async (req, res) => {
 
   const filter = { username: usernameToTransfer };
   const update = { balance: money.price };
-
-  const usernameReceivedMoney = await UserModel.findOneAndUpdate(
+const checkUser = await UserModel.findOne(filter)
+if (!checkUser) return res.json(null);
+  await UserModel.findOneAndUpdate(
     filter,
     {
       $inc: update,
-      $push: { expense: { ...money, moneyType: "received ", id: checkUser.expense.length } },
+      $push: { expense: { ...money, moneyType: "received", id: checkUser.expense.length } },
     },
     { new: true }
   );
-  if (!usernameReceivedMoney) return res.json(null);
   const currentUser = await UserModel.findByIdAndUpdate(
     verifyTokenJwt(token),
     {
@@ -108,11 +108,12 @@ router.post("/user/credit-card", async (req, res) => {
   let generateCvv = Math.floor(Math.random() * 999);
   let found = false;
 
+  const isCreditCvvExist = await UserModel.findOne({ "creditCard.cvv": generateCvv });
   while (!found) {
-    const test = await UserModel.findOne({ "creditCard.cvv": generateCvv });
-
-    if (test) generateCvv = Math.floor(Math.random() * 999);
-    else found = true;
+    
+    if (isCreditCvvExist) generateCvv = Math.floor(Math.random() * 999);
+    if(generateCvv.toString().length <3){generateCvv = Math.floor(Math.random() * 999);}
+    if(generateCvv.toString().length ===3 && isCreditCvvExist) found = true;
   }
 
   const cardNumber = [4580, 3900, Math.floor(Math.random() * 9999), Math.floor(Math.random() * 9999)];

@@ -2,12 +2,29 @@
   display: none;
 }
 .upload_img_label {
-  text-align: center;
+  color: rgb(15, 139, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 150px;
-  border-radius: 10px;
-  background-color: rgb(0, 120, 249);
+  height: 40px;
+  border-radius: 5px;
+  background-color:white
+}
+.icon{
+  font-size: 25px;
 }
 .upload_img_label:hover{
 border: 1px solid white;
-background: linear-gradient(to right, rgb(165, 210, 255),rgb(4, 146, 247));
+}
+.user_container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media screen and (width <768px) {
+  .user_container{
+  }
 }

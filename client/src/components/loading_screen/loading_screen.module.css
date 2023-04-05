@@ -2,7 +2,7 @@
   position: fixed;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 131, 253, 0.817);
+  background-color: rgba(0, 0, 0, 0.86);
 }
 .loading {
   display: flex;

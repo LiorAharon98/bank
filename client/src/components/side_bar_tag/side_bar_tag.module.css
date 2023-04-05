@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  justify-content: space-around;
+  border-bottom: 1px solid white;
+}
+.container:hover {
+  transition: 1s;
+  background-color: white;
+  text-decoration: underline;
+  color: rgb(0, 123, 255);
+}
+.button {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+}
+.button:hover {
+
+  transition: 1s;
+  color: rgb(0, 123, 255);
+}
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}

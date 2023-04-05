@@ -12,7 +12,10 @@ export const useDataProvider = () => {
 const DataProvider = ({ children }) => {
   const baseUrl = "https://nodejs-bank.herokuapp.com/bank";
   const localhostUrl = "http://localhost:8000/bank";
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(() => {
+    const data = JSON.parse(sessionStorage.getItem("key"));
+    return data ? data : {};
+  });
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [hamburgerToggle, setHamburgerToggle] = useState(false);
   const [cookies, setCookies] = useCookies("");
@@ -24,12 +27,6 @@ const DataProvider = ({ children }) => {
       sessionStorage.setItem("key", JSON.stringify(user));
     }
   }, [user]);
-  useEffect(() => {
-    const data = JSON.parse(sessionStorage.getItem("key"));
-    if (data) {
-      setUser(data);
-    }
-  }, []);
 
   const addUser = async (data) => {
     const maxLoan = Math.floor((data.income * 70) / 100);
@@ -129,10 +126,11 @@ const DataProvider = ({ children }) => {
     sessionStorage.removeItem("key");
     setUser({});
   };
+
   const getDate = () => {
     const date = new Date();
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
+    const day = date.getDate().toString().length === 1 ? `0${date.getDate()}` : date.getDate();
+    const month = date.getMonth().toString().length === 1 ? `0${date.getMonth()+1}` : date.getMonth()+1;
     const year = date.getFullYear();
     return `${day}-${month}-${year}`;
   };
