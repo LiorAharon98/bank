@@ -95,7 +95,7 @@ router.post("/user/update-user-details", async (req, res) => {
 });
 router.put("/user/update-user-details", async (req, res) => {
   const { profilePicture, token } = req.body;
-
+console.log(req.body)
   try {
     const user = await UserModel.findByIdAndUpdate(verifyTokenJwt(token), { profilePicture }, { new: true });
 

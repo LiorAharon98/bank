@@ -6,7 +6,7 @@ import Button from "../../components/button/Button";
 import { useState } from "react";
 import styles from "./transfer_money.module.css";
 const TransferMoney = () => {
-  const { transferMoney, user, scrollToTop } = useDataProvider();
+  const {changeLanguage, transferMoney, user, scrollToTop } = useDataProvider();
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [toggle, setToggle] = useState(false);
@@ -17,7 +17,6 @@ const TransferMoney = () => {
   const handleClick = async (data) => {
     const { price, usernameToTransfer } = data;
     if (price === "" || price < 0) return setError("please fill data");
-    // if (price > balance) return setError("we not allowed to be at overdraft");
     const user = await transferMoney(_id, Number(price), usernameToTransfer, expense);
     if (!user) {
       return [setError("users not found"), toggleFunc(false)];
@@ -33,7 +32,7 @@ const TransferMoney = () => {
   return (
     <UserPage>
       <div className={styles.container}>
-      <p>your income : {user.balance}</p> 
+      <p>{changeLanguage('your balance')} : {user.balance}</p> 
           <Input
             toggle={toggle}
             toggleFunc={toggleFunc}

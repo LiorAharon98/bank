@@ -1,6 +1,5 @@
 .user_menu_container {
   position: fixed;
-  bottom: 2%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

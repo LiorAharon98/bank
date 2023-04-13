@@ -1,26 +1,30 @@
 import { useDataProvider } from "../../context/Data";
 import AuthenticationSign from "../../components/authentication_sign/AuthenticationSign";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import styles from "./sign_up_page.module.css";
+import { useState } from "react";
+import LoadingScreen from "../../components/loading_screen/LoadingScreen";
 import SignCard from "../../components/sign_card/SignCard";
 const SignUpPage = () => {
-  const { addUser, specificUser, scrollToTop, changeLanguage } = useDataProvider();
+  const { addUser, scrollToTop } = useDataProvider();
   const [userError, setUserError] = useState(false);
+  const [spinner, setSpinner] = useState(false);
   const navigate = useNavigate();
   const handleClick = async (data) => {
+    setSpinner(true);
     const response = await addUser(data);
+    setSpinner(false);
     if (response) return setUserError("user already exist");
     navigate("/sign-in");
     scrollToTop();
   };
 
   return (
+    <>
+      {spinner && <LoadingScreen text={"creating user"} />}
     <SignCard>
       <AuthenticationSign userError={userError} page={"sign up"} onClick={handleClick} text={"sign up"} />
-
     </SignCard>
+    </>
   );
 };
 

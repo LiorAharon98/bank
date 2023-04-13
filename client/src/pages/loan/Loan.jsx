@@ -27,7 +27,7 @@ const Loan = () => {
     <UserPage>
       <div className={styles.container}>
         <div className={styles.text_container}>
-          <p>your income : {user.balance}</p>
+          <p>{changeLanguage('your balance')} : {user.balance}</p>
             <Input 
               toggle={toggle}
               toggleFunc={toggleFunc}

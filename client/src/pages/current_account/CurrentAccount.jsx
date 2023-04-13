@@ -21,7 +21,10 @@ const CurrentAccount = () => {
           <p className={styles.current_income}>
             {changeLanguage("balance")} : {balance}₪
           </p>
-          <p className={styles.balance_indicator} style={{ backgroundColor: user.balance < 0 ? "red" : "green" }}></p>
+          <p
+            className={styles.balance_indicator}
+            style={{ backgroundColor: user.balance < 0 ? "red" : "rgb(0, 204, 0)" }}
+          ></p>
         </div>
         <p className={styles.current_income}>
           {changeLanguage("income")} : {income}₪
@@ -50,7 +53,7 @@ const CurrentAccount = () => {
                       </p>
 
                       <p className={styles.date}>{date}</p>
-                      <p className={styles.price}>{price} ₪</p>
+                      <p className={styles.price}>{price}₪</p>
                       <div className={styles.status}>
                         <div
                           style={{

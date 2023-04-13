@@ -20,7 +20,7 @@ const UpdateUserDetails = () => {
   const { username, email } = user;
   const h3 = [
     { text: "username", label: `${changeLanguage("username")} : ${username}` },
-    { text: "password", label: `${changeLanguage("password")}  : encrypted` },
+    { text: "password" },
     { text: "email", label: `${changeLanguage("email")} :  ${email} ` },
   ];
   return (

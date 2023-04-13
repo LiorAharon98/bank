@@ -10,8 +10,7 @@ export const useDataProvider = () => {
 };
 
 const DataProvider = ({ children }) => {
-  const baseUrl = "https://nodejs-bank.herokuapp.com/bank";
-  const localhostUrl = "http://localhost:8000/bank";
+  const serverUrl = process.env.NODE_ENV === "development" ? process.env.REACT_APP_Local : process.env.REACT_APP_Server;
   const [user, setUser] = useState(() => {
     const data = JSON.parse(sessionStorage.getItem("key"));
     return data ? data : {};
@@ -21,6 +20,7 @@ const DataProvider = ({ children }) => {
   const [cookies, setCookies] = useCookies("");
 
   const { t } = useTranslation();
+
 
   useEffect(() => {
     if (Object.keys(user).length > 0) {
@@ -33,7 +33,7 @@ const DataProvider = ({ children }) => {
 
     const user = { ...data, balance: 5000, expense: [], maxLoan };
     try {
-      const response = await axios.post(`${baseUrl}/sign-up`, user);
+      const response = await axios.post(`${serverUrl}/sign-up`, user);
 
       return response.data ? true : false;
     } catch (error) {
@@ -45,7 +45,7 @@ const DataProvider = ({ children }) => {
     const user = { username, password };
 
     try {
-      const response = await axios.post(`${baseUrl}/sign-in`, user);
+      const response = await axios.post(`${serverUrl}/sign-in`, user);
 
       if (response.data) {
         setUser(response.data[0]);
@@ -65,7 +65,7 @@ const DataProvider = ({ children }) => {
       token: cookies.jwt,
     };
     try {
-      const response = await axios.post(`${baseUrl}/user/transfer-money`, details);
+      const response = await axios.post(`${serverUrl}/user/transfer-money`, details);
       if (!response.data) return false;
       setUser(response.data);
       return response.data;
@@ -76,7 +76,7 @@ const DataProvider = ({ children }) => {
   const loanMoney = async (id, price, expense) => {
     const user = { id, money: { price, moneyType: "loan", date: getDate(), id: expense.length }, token: cookies.jwt };
     try {
-      const response = await axios.post(`${baseUrl}/user/loan`, user);
+      const response = await axios.post(`${serverUrl}/user/loan`, user);
       setUser(response.data);
     } catch (error) {
       console.log(error);
@@ -91,7 +91,7 @@ const DataProvider = ({ children }) => {
     };
 
     try {
-      const response = await axios.post(`${baseUrl}/user/credit-card`, creditCard);
+      const response = await axios.post(`${serverUrl}/user/credit-card`, creditCard);
 
       setUser(response.data);
     } catch (error) {
@@ -101,8 +101,9 @@ const DataProvider = ({ children }) => {
 
   const changeDetails = async (data) => {
     const details = { ...data, token: cookies.jwt };
+    console.log(details);
     try {
-      const response = await axios.post(`${baseUrl}/user/update-user-details`, details);
+      const response = await axios.post(`${serverUrl}/user/update-user-details`, details);
       setUser(response.data);
     } catch (error) {
       console.log(error);
@@ -115,7 +116,7 @@ const DataProvider = ({ children }) => {
 
       const pictureUrl = await getDownloadURL(storageRef);
       const userInfo = { profilePicture: pictureUrl, token: cookies.jwt };
-      const response = await axios.put(`${baseUrl}/user/update-user-details`, userInfo);
+      const response = await axios.put(`${serverUrl}/user/update-user-details`, userInfo);
       setUser(response.data);
     } catch (error) {
       console.log(error);
@@ -130,7 +131,7 @@ const DataProvider = ({ children }) => {
   const getDate = () => {
     const date = new Date();
     const day = date.getDate().toString().length === 1 ? `0${date.getDate()}` : date.getDate();
-    const month = date.getMonth().toString().length === 1 ? `0${date.getMonth()+1}` : date.getMonth()+1;
+    const month = date.getMonth().toString().length === 1 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
     const year = date.getFullYear();
     return `${day}-${month}-${year}`;
   };
@@ -157,8 +158,7 @@ const DataProvider = ({ children }) => {
     onToggleSidebar,
     toggleSidebar,
     scrollToTop,
-    baseUrl,
-    localhostUrl,
+    serverUrl,
     user,
     addUser,
     specificUser,

@@ -1,7 +1,6 @@
 .container {
   display: flex;
   height: 660px;
-  margin-top: 20px;
   align-items: center;
   width: 100%;
 }
@@ -26,13 +25,12 @@
 @media screen and (max-width: 768px) {
   .sign_up_authentication_container {
     width: 95%;
+    height: 100%;
   }
   .sign_in_authentication_container {
-    width: 100%;
+    width: 70%;
     height: 85%;
   }
-  .container {
-    width: 100%;
-  }
+
 
 }

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./input_validation.module.css";
 import { Controller } from "react-hook-form";
 import { useDataProvider } from "../../context/Data";
-const InputValidation = ({ type, name, control, rules, color }) => {
+const InputValidation = ({ type, name, control, rules }) => {
   const { changeLanguage } = useDataProvider();
   return (
     <Controller

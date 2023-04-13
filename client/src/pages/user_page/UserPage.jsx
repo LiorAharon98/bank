@@ -29,8 +29,14 @@ const UserPage = ({ children, text }) => {
     <>
       <div className={styles.profile_container}></div>
       <UserMenu toggleOptionFunc={toggleOptionFunc} toggle={toggleMenu} />
-      <div style={{display : toggleMenu ? 'none' : undefined}} className={styles.test}>
-        {!toggleMenu && <AiOutlineArrowRight onMouseEnter={toggle} className={styles.icon} />}
+      <div style={{ display: toggleMenu ? "none" : undefined }} className={styles.test}>
+      
+        {!toggleMenu &&
+          <div className={styles.icon_container}>
+
+            <AiOutlineArrowRight onMouseEnter={toggle} className={styles.icon} />
+          </div>
+            }
       </div>
       <div className={styles.container}>
         <div></div>

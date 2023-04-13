@@ -6,12 +6,12 @@ import { useDataProvider } from "../../context/Data";
 import LoadingScreen from "../../components/loading_screen/LoadingScreen";
 import styles from "./admin_page.module.css";
 const AdminPage = () => {
-  const { changeLanguage, baseUrl } = useDataProvider();
+  const { changeLanguage, serverUrl } = useDataProvider();
   const [spinner, setSpinner] = useState(false);
   const [users, setUsers] = useState([]);
   const fetchUsers = async () => {
     setSpinner(true);
-    const response = await axios.get(`${baseUrl}/admin`);
+    const response = await axios.get(`${serverUrl}/admin`);
     setUsers(response.data);
     setSpinner(false);
   };
