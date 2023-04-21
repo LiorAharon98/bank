@@ -3,10 +3,9 @@ import { useRef } from "react";
 import { useState } from "react";
 import { useDataProvider } from "../../context/Data";
 import Button from "../button/Button";
-import styles from "./user_details.module.css";
 const UserDetails = ({ text, label }) => {
   const [toggleInp, setToggleInp] = useState(false);
-  const { changeDetails, changeLanguage } = useDataProvider();
+  const { user, changeLanguage } = useDataProvider();
 
   const inpRef = useRef();
   const clickHandler = (e) => {
@@ -14,7 +13,7 @@ const UserDetails = ({ text, label }) => {
     if (!toggleInp) return setToggleInp(true);
 
     const info = { info: text, value: inpRef.current.value };
-    changeDetails(info);
+    user.method().changeDetails(info);
     setToggleInp(false);
   };
   return (

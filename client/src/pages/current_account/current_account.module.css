@@ -1,31 +1,16 @@
 .expense_container {
-  /* text-align: center; */
   display: flex;
   flex-direction: column;
   display: flex;
   justify-content: space-around;
-  /* width: 100%; */
 }
-.money_details {
-  font-size: 18px;
-  border-radius: 10px;
-  padding: 2px;
-  width: 25%;
-  text-align: center;
-  margin-left: 15px;
-}
-.status {
-  display: flex;
-  justify-content: center;
-  width: 25%;
-  height: 15px;
-  border-radius: 5px;
-}
+
 .balance_indicator {
   height: 3px;
   width: 125px;
   border-radius: 5px;
 }
+
 .current_income {
   font-size: 18px;
   font-weight: 500;
@@ -41,34 +26,27 @@
   justify-content: space-around;
   color: rgb(147, 147, 147);
 }
-.test {
-  display: flex;
-  justify-content: space-around;
-}
-.test2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 100%;
-}
-.container2 {
-  display: flex;
-  width: 78%;
-  justify-content: space-between;
-  font-size: 20px;
-}
 .container1 {
   display: flex;
-  width: 100%;
+  width: 101%;
   justify-content: space-around;
 }
-.date {
+.status_container {
+  display: flex;
+  justify-content: center;
+}
+.status {
+  height: 10px;
+  width: 40px;
+  border-radius: 15px;
+}
+.money_details {
   text-align: center;
   width: 25%;
 }
-.price {
-  width: 25%;
-  text-align: center;
+.action {
+  color: rgb(0, 130, 255);
+  font-size: 18px;
 }
 .money_container:hover {
   background-color: white;
@@ -77,11 +55,10 @@
 }
 
 @media screen and (max-width: 768px) {
-  .container2 {
-    width: 90%;
+  .container1 {
+    width: 100%;
   }
   .money_details {
     margin: 0px;
-    text-align: left;
   }
 }

@@ -9,7 +9,6 @@ import CurrentAccount from "./pages/current_account/CurrentAccount";
 import UpdateUserDetails from "./pages/update_user_details/UpdateUserDetails";
 import TransferMoney from "./pages/transfer_money/TransferMoney";
 import Loan from "./pages/loan/Loan";
-import HomeScreenSidebar from "./components/home_screen_side_bar/HomeScreenSidebar";
 import CreditCard from "./pages/credit_card/CreditCard";
 import NotFound from "./pages/not_found/NotFound";
 function App() {
@@ -17,7 +16,6 @@ function App() {
     <HashRouter>
       <Header />
 
-      <HomeScreenSidebar />
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/sign-in" element={<SignInPage />}></Route>

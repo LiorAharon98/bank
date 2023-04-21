@@ -6,19 +6,19 @@ import Button from "../../components/button/Button";
 import { useState } from "react";
 import styles from "./transfer_money.module.css";
 const TransferMoney = () => {
-  const {changeLanguage, transferMoney, user, scrollToTop } = useDataProvider();
+  const { changeLanguage, user, scrollToTop } = useDataProvider();
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [toggle, setToggle] = useState(false);
   const toggleFunc = (value) => {
     setToggle(value);
   };
-  const { balance, expense, _id } = user;
+  
   const handleClick = async (data) => {
     const { price, usernameToTransfer } = data;
     if (price === "" || price < 0) return setError("please fill data");
-    const user = await transferMoney(_id, Number(price), usernameToTransfer, expense);
-    if (!user) {
+    const responseUser = await user.method().transferMoney(Number(price), usernameToTransfer);
+    if (!responseUser) {
       return [setError("users not found"), toggleFunc(false)];
     }
 
@@ -32,21 +32,22 @@ const TransferMoney = () => {
   return (
     <UserPage>
       <div className={styles.container}>
-      <p>{changeLanguage('your balance')} : {user.balance}</p> 
-          <Input
-            toggle={toggle}
-            toggleFunc={toggleFunc}
-            text={"transfer"}
-            inpData={inp}
-            onClick={handleClick}
-            inpNumber={2}
-            error={error}
-          />
+        <p>
+          {changeLanguage("your balance")} : {user.balance}₪
+        </p>
+        <Input
+          toggle={toggle}
+          toggleFunc={toggleFunc}
+          text={"transfer"}
+          inpData={inp}
+          onClick={handleClick}
+          inpNumber={2}
+          error={error}
+        />
         <div>
           <Button text={"transfer"} onClick={toggleFunc.bind(this, true)} />
         </div>
-     
-     </div>
+      </div>
     </UserPage>
   );
 };

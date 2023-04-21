@@ -1,7 +1,5 @@
 import axios from "axios";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDataProvider } from "../../context/Data";
 import LoadingScreen from "../../components/loading_screen/LoadingScreen";
 import styles from "./admin_page.module.css";
@@ -43,8 +41,7 @@ const AdminPage = () => {
                   <td className={styles.user_info}>{income}₪</td>
                   <td className={styles.user_info}>{maxLoan}₪</td>
                   <tr className={styles.status_container}>
-
-                  <td className={balance >0 ? styles.noun : styles.overdraft}></td>
+                    <td className={balance > 0 ? styles.noun : styles.overdraft}></td>
                   </tr>
                 </tr>
               );

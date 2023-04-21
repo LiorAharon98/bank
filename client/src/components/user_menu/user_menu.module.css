@@ -2,15 +2,14 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   background: linear-gradient(to bottom, rgb(3, 124, 253), rgb(102, 168, 255));
-  border-radius: 10px;
-  height: 600px;
-  width: 250px;
+  border-top-right-radius: 10px;
+  height: 100%;
+  width: 210px;
   transition: 500ms;
 }
-.option_container{
+.option_container {
   width: 91%;
   display: flex;
   flex-direction: column;
@@ -32,31 +31,29 @@
 }
 #welcome_message {
   color: white;
-  margin: 5px;
+  margin: 0px;
 }
 .profile_image {
-  margin-top: 10px;
+  margin-top: 5px;
   width: 60px;
-  height: 60px;
-  border-radius: 20px;
+  height: 65px;
+  border-radius: 30px;
 }
 .container_user_info {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 100%;
+  justify-content: space-between;
 }
 @media screen and (max-width: 768px) {
   .user_menu_container {
     position: fixed;
-    height: 86%;
-    width: 220px;
-    padding-left: 10px;
+    height: 90%;
+    width: 190px;
+    padding-left: 5px;
   }
   .user_menu_inactive {
     position: fixed;
     width: 0px;
     transition: 500ms;
   }
- 
 }

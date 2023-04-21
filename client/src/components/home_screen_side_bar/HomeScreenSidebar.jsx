@@ -3,10 +3,10 @@ import styles from "./home_screen_side_bar.module.css";
 import { useDataProvider } from "../../context/Data";
 import SideBarTag from "../side_bar_tag/SideBarTag";
 import { useNavigate } from "react-router-dom";
-const HomeScreenSidebar = () => {
+const HomeScreenSidebar = ({ toggleSidebar, onToggleSidebar }) => {
   const navigate = useNavigate();
 
-  const { toggleSidebar, user, onToggleSidebar } = useDataProvider();
+  const { user } = useDataProvider();
 
   const handleTo = (to, e) => {
     e.preventDefault();
@@ -30,19 +30,19 @@ const HomeScreenSidebar = () => {
     { text: "Business", to: "/business" },
   ];
   return (
-    <>
+    <div>
       <div className={toggleSidebar ? styles.background : undefined}></div>
       <div className={toggleSidebar ? styles.container : styles.container_inactive}>
         {toggleSidebar && (
           <>
             {buttons.map((button, index) => {
-              if(button.text==='Create new account' && Object.keys(user).length>0)return
-              return  <SideBarTag key={index} {...button} onClick={handleTo.bind(this, button.to)} />;
+              if (button.text === "Create new account" && Object.keys(user).length > 0) return;
+              return <SideBarTag key={index} {...button} onClick={handleTo.bind(this, button.to)} />;
             })}
           </>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

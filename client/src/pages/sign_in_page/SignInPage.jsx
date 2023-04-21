@@ -14,7 +14,9 @@ const SignInPage = () => {
   const { specificUser, scrollToTop, changeLanguage } = useDataProvider();
   const handleClick = async (data) => {
     setSpinner(true);
-    const { username, password } = data;
+    let { username, password } = data;
+    console.log(username)
+    username = username.trim()
     if (username === "Admin" && password === "1111") return navigate("/admin");
     const responseUser = await specificUser(username, password);
     setSpinner(false);

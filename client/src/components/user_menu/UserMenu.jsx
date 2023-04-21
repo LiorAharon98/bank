@@ -16,13 +16,11 @@ const UserMenu = ({ toggleOptionFunc, toggle }) => {
     <div className={toggle ? styles.user_menu_container : styles.user_menu_inactive}>
       {toggle && (
         <>
-          <div className={styles.container_user_info}>
+          <div  className={styles.container_user_info}>
             {user.profilePicture && <img className={styles.profile_image} src={user.profilePicture} alt="error" />}
-            <h1 id={styles.welcome_message}>
-              {changeLanguage("hello")} {user.username}
-            </h1>
           </div>
           <div className={styles.option_container}>
+            <h2 id={styles.welcome_message}>{user.username}</h2>
             {li.map((li, index) => {
               return (
                 <SideBarTag

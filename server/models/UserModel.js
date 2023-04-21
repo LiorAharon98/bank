@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const userSchema = new mongoose.Schema({
-  username: {type : String , unique : true , lowercase : true , required : true},
-  password: {type :String , minlength : 5 , required : true},
-  email: {type : String , unique : true , required : true},
-  income: {type : Number, minlength : 4 , required : true},
+  username: { type: String, unique: true, required: true },
+  password: { type: String, minlength: 5, required: true },
+  email: { type: String, unique: true, required: true },
+  income: { type: Number, minlength: 4, required: true },
   balance: Number,
   maxLoan: Number,
   expense: Array,

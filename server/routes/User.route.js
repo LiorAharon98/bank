@@ -1,6 +1,5 @@
-const express = require("express");
 const bcrypt = require("bcrypt");
-const router = express.Router();
+const router = require("express").Router()
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/UserModel");
 
@@ -45,8 +44,8 @@ router.post("/user/transfer-money", async (req, res) => {
 
   const filter = { username: usernameToTransfer };
   const update = { balance: money.price };
-const checkUser = await UserModel.findOne(filter)
-if (!checkUser) return res.json(null);
+  const checkUser = await UserModel.findOne(filter);
+  if (!checkUser) return res.json(null);
   await UserModel.findOneAndUpdate(
     filter,
     {
@@ -69,7 +68,6 @@ if (!checkUser) return res.json(null);
 
 router.post("/user/loan", async (req, res) => {
   const { money, token, id } = req.body;
-
   const update = { balance: money.price, maxLoan: -money.price };
   try {
     const user = await UserModel.findByIdAndUpdate(
@@ -95,7 +93,6 @@ router.post("/user/update-user-details", async (req, res) => {
 });
 router.put("/user/update-user-details", async (req, res) => {
   const { profilePicture, token } = req.body;
-console.log(req.body)
   try {
     const user = await UserModel.findByIdAndUpdate(verifyTokenJwt(token), { profilePicture }, { new: true });
 
@@ -105,15 +102,17 @@ console.log(req.body)
   }
 });
 router.post("/user/credit-card", async (req, res) => {
+  
   let generateCvv = Math.floor(Math.random() * 999);
   let found = false;
 
   const isCreditCvvExist = await UserModel.findOne({ "creditCard.cvv": generateCvv });
   while (!found) {
-    
     if (isCreditCvvExist) generateCvv = Math.floor(Math.random() * 999);
-    if(generateCvv.toString().length <3){generateCvv = Math.floor(Math.random() * 999);}
-    if(generateCvv.toString().length ===3 && isCreditCvvExist) found = true;
+    if (generateCvv.toString().length < 3) {
+      generateCvv = Math.floor(Math.random() * 999);
+    }
+    if (generateCvv.toString().length === 3 && !isCreditCvvExist) found = true;
   }
 
   const cardNumber = [4580, 3900, Math.floor(Math.random() * 9999), Math.floor(Math.random() * 9999)];

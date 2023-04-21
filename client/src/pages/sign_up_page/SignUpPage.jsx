@@ -11,6 +11,7 @@ const SignUpPage = () => {
   const navigate = useNavigate();
   const handleClick = async (data) => {
     setSpinner(true);
+    data.username = data.username.trim()
     const response = await addUser(data);
     setSpinner(false);
     if (response) return setUserError("user already exist");
