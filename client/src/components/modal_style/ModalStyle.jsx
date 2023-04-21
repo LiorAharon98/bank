@@ -6,6 +6,7 @@ const ModalStyle = ({ action, func, toggleFunc, toggle }) => {
   const { changeLanguage } = useDataProvider();
   const clickHandler = (e, value) => {
     e.preventDefault();
+
     if (!value) return toggleFunc(false);
     func();
   };
