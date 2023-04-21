@@ -6,7 +6,7 @@ body {
     "Helvetica Neue", sans-serif;
 }
 .side_bar {
-  width: 50%;
+  height: 100%;
   background: linear-gradient(to top, rgb(0, 123, 255), rgb(106, 168, 255));
 }
 
@@ -43,7 +43,5 @@ body {
   .img_container {
     width: 40%;
   }
-  .side_bar{
-    width: 50%;
-  }
+
 }
