@@ -83,7 +83,8 @@ const translation_he = {
 'change email' : 'שנה אימייל',
 'received':'התקבל',
 date : 'תאריך',
-action : 'פעולה'
+action : 'פעולה',
+change : 'שנה'
   
 };
 export default translation_he;

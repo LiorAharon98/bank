@@ -36,7 +36,7 @@
   background: linear-gradient(to bottom, rgb(3, 124, 253), rgb(102, 168, 255));
   min-height: 90vh;
   width: 50px;
-  border-radius: 5px;
+  border-radius: 10px 0px 0px 10px
 }
 
 @media screen and (max-width: 768px) {

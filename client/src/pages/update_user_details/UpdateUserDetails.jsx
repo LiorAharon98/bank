@@ -36,7 +36,7 @@ const UpdateUserDetails = () => {
           <UserDetails key={index} text={h3.text} />
         ))}
         <label className={styles.upload_img_label} htmlFor="img_upload">
-          {changeLanguage("upload")}
+          {changeLanguage(user.profilePicture ? "change" : "upload")}
           <AiOutlineUpload className={styles.icon} />
         </label>
       </div>

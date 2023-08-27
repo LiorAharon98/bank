@@ -1,60 +1,59 @@
-.container {
+.table_container {
   display: flex;
   justify-content: center;
   width: 100%;
   margin-top: 20px;
   align-items: center;
-}
-.table_container {
-  width: 60%;
-  height: 100px;
-  border: 1.5px solid rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
 }
-
+.tbody_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 .tr_container {
-  height: 65px;
-
+  display: flex;
+  align-items: center;
   text-align: center;
+
+  height: 65px;
 }
 
 .noun {
   border-radius: 5px;
   background: linear-gradient(to right, rgb(75, 255, 156), rgb(22, 131, 14));
+  text-align: center;
   width: 45px;
   height: 7px;
 }
 .status_container {
-  height: 100%;
+  width: 19%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 .overdraft {
   width: 45px;
   height: 7px;
   border-radius: 5px;
-  background: linear-gradient(to left, red,rgb(255, 201, 201));
+  background: linear-gradient(to left, red, rgb(255, 201, 201));
 }
 
 .user_info {
   border-right: 1px solid rgb(0, 0, 0);
-  border-bottom: 1px solid rgb(0, 0, 0);
   font-size: 20px;
+  width: 19.5%;
 }
 
 @media screen and (max-width: 768px) {
   .table_container {
-    width: 97%;
+    /* width: 97%; */
+    justify-content: unset;
     border: none;
-    height: 30%;
   }
-
+ 
   .user_info {
-    font-size: 16px;
-  }
-
-  .noun {
-    width: 50px;
+    font-size: 15px;
   }
 }

@@ -45,6 +45,7 @@ const AuthenticationSign = ({ onClick, page, userError }) => {
             rules={{
               required: "fill please",
               minLength: { value: 4, message: "should be at least 4 char" },
+              maxLength: { value: 10, message: "should be at max 10 char" },
             }}
           />
           <div className={styles.input_password}>
@@ -95,7 +96,7 @@ const AuthenticationSign = ({ onClick, page, userError }) => {
         )}
         <div className={styles.button_container}>
           <button onClick={handleSubmit(onClick)} className={styles.button} type="submit">
-            {page === "sign up" ? "sign up" : "sign in"}
+            {changeLanguage(page === "sign up" ? "sign up" : "sign in")}
           </button>
           {page !== "sign up" ? (
             <Link style={{ color: "rgb(1, 165, 247)" }} to={"/sign-up"}>

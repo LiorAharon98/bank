@@ -7,6 +7,8 @@ require("dotenv").config();
 setServerConfiguration(app);
 mongoose.connect(process.env.MONGODB_URI);
 
+
+
 app.use("/bank", UserRoute);
 
 app.listen(process.env.PORT);

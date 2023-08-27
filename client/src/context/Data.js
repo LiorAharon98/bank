@@ -37,10 +37,8 @@ const DataProvider = ({ children }) => {
     const maxLoan = Math.floor((data.income * 70) / 100);
 
     const user = { ...data, balance: 5000, expense: [], maxLoan };
-
     try {
       const response = await axios.post(`${serverUrl}/sign-up`, user);
-
       return response.data ? true : false;
     } catch (error) {
       console.log(error);
@@ -97,13 +95,16 @@ const DataProvider = ({ children }) => {
     }
   }
   async function addCreditCard() {
+    const date = new Date();
     const creditCard = {
       cardHolder: this.username,
       cardNumber: [0, 0, 0, 0],
-      expireData: { month: 8, year: 26 },
+      expireData: {
+        month: date.getMonth().toString().length === 1 ? `0${date.getMonth() + 1}` : date.getMonth() + 1,
+        year: new Date().getFullYear(),
+      },
       cvv: 0,
     };
-
     try {
       const response = await axios.post(`${serverUrl}/user/credit-card`, creditCard);
       setUser(response.data);
@@ -111,7 +112,6 @@ const DataProvider = ({ children }) => {
       console.log(error);
     }
   }
-
   async function changeDetails(data) {
     const details = { ...data, token: this.jwt };
     try {

@@ -15,8 +15,7 @@ const SignInPage = () => {
   const handleClick = async (data) => {
     setSpinner(true);
     let { username, password } = data;
-    console.log(username)
-    username = username.trim()
+    username = username.trim();
     if (username === "Admin" && password === "1111") return navigate("/admin");
     const responseUser = await specificUser(username, password);
     setSpinner(false);

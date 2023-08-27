@@ -1,8 +1,14 @@
 const bcrypt = require("bcrypt");
-const router = require("express").Router()
+const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const UserModel = require("../models/UserModel");
-
+const currentDate = () => {
+  const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  return `${day}-${month}-${year}`;
+};
 const verifyTokenJwt = (token) => {
   return jwt.verify(token, "liors-secret");
 };
@@ -25,6 +31,7 @@ router.post("/sign-up", async (req, res) => {
     res.json(error);
   }
 });
+
 router.post("/sign-in", async (req, res) => {
   const { username, password } = req.body;
   const user = await UserModel.findOne({ username });
@@ -102,7 +109,6 @@ router.put("/user/update-user-details", async (req, res) => {
   }
 });
 router.post("/user/credit-card", async (req, res) => {
-  
   let generateCvv = Math.floor(Math.random() * 999);
   let found = false;
 
@@ -124,5 +130,20 @@ router.post("/user/credit-card", async (req, res) => {
 
   res.json(user);
 });
-
+router.post("/user/lottery", async (req, res) => {
+  const { username } = req.body;
+  const user = await UserModel.findOne({ username });
+  res.json(user);
+});
+router.put("/user/lottery-win", async (req, res) => {
+  const { username, number } = req.body;
+  const checkUser = await UserModel.findOne({ username });
+  await UserModel.findOneAndUpdate(
+    { username },
+    {
+      $inc: { balance: number },
+      $push: { expense: { price: number, moneyType: "lotto win", date: currentDate(), id: checkUser.expense.length } },
+    }
+  );
+});
 module.exports = router;

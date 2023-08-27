@@ -11,7 +11,7 @@ const CreditCard = () => {
   const { username, creditCard } = user;
 
   const clickHandler = async () => {
-    await user.method.addCreditCard(username);
+    await user.method().addCreditCard(username);
     setToggleModal(false);
   };
   const toggleModalFunc = (value, e) => {

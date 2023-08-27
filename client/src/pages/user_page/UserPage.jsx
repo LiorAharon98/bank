@@ -5,7 +5,7 @@ import UserMenu from "../../components/user_menu/UserMenu";
 import { useDataProvider } from "../../context/Data";
 import { AiOutlineArrowRight } from "react-icons/ai";
 const UserPage = ({ children, text }) => {
-  const { logoutUser, scrollToTop } = useDataProvider();
+  const { logoutUser, scrollToTop,user } = useDataProvider();
   const navigate = useNavigate();
   const [toggleMenu, setToggleMenu] = useState(false);
 
